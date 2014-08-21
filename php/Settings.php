@@ -9,9 +9,9 @@ class Settings {
 
     // variabili di accesso per il database
     public static $db_host = 'localhost';
-    public static $db_user = 'esammi';
-    public static $db_password = 'davide';
-    public static $db_name='esammi';
+    public static $db_user = 'atzeniAndrea';
+    public static $db_password = 'scoiattolo262';
+    public static $db_name='ancora_da_decidere';
     
     private static $appPath;
 
@@ -26,11 +26,11 @@ class Settings {
             switch ($_SERVER['HTTP_HOST']) {
                 case 'localhost':
                     // configurazione locale
-                    self::$appPath = 'http://' . $_SERVER['HTTP_HOST'] . '/esAMM2014/esami14/';
+                    self::$appPath = 'http://' . $_SERVER['HTTP_HOST'] . '/AMM_Project_2014';
                     break;
                 case 'spano.sc.unica.it':
                     // configurazione pubblica
-                    self::$appPath = 'http://' . $_SERVER['HTTP_HOST'] . '/amm2014/davide/esami14/';
+                    self::$appPath = 'http://' . $_SERVER['HTTP_HOST'] . '/amm2014/atzeniAndrea/AMM_Project_2014';
                     break;
 
                 default:
