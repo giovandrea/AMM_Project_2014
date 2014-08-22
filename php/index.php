@@ -2,7 +2,7 @@
 
 
 include_once 'controller/BaseController.php';
-include_once 'controller/UtenteController.php';
+include_once 'controller/ClienteController.php';
 include_once 'controller/AmministratoreController.php';
 
 date_default_timezone_set("Europe/Rome");

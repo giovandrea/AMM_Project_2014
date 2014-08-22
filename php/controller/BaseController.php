@@ -14,7 +14,6 @@ class BaseController {
 
     const user = 'user';
     const role = 'role';
-    const impersonato = '_imp';
 
     /**
      * Costruttore
@@ -31,12 +30,8 @@ class BaseController {
         // creo il descrittore della vista
         $vd = new ViewDescriptor();
 
-
         // imposto la pagina
         $vd->setPagina($request['page']);
-
-        // imposto il token per impersonare un utente (nel lo stia facendo)
-        $this->setImpToken($vd, $request);
 
         // gestion dei comandi
         // tutte le variabili che vengono create senza essere utilizzate 
@@ -58,7 +53,7 @@ class BaseController {
             }
         } else {
             if ($this->loggedIn()) {
-                //utente autenticato
+                // utente autenticato
                 // questa variabile viene poi utilizzata dalla vista
                 $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
 
@@ -87,7 +82,7 @@ class BaseController {
      */
     protected function showLoginPage($vd) {
         // mostro la pagina di login
-        $vd->setTitolo("esAMMi - login");
+        $vd->setTitolo("MusicAMM - login");
         $vd->setMenuFile(basename(__DIR__) . '/../view/login/menu.php');
         $vd->setLogoFile(basename(__DIR__) . '/../view/login/logo.php');
         $vd->setLeftBarFile(basename(__DIR__) . '/../view/login/leftBar.php');
@@ -100,32 +95,15 @@ class BaseController {
      * del'utente
      * @param ViewDescriptor $vd il descrittore della vista
      */
-    protected function showHomeStudente($vd) {
-        // mostro la home degli studenti
+        protected function showHomeCliente($vd) {
+        // mostro la home dei clienti
 
-        $vd->setTitolo("esAMMi - gestione studente ");
-        $vd->setMenuFile(basename(__DIR__) . '/../view/utente/menu.php');
-        $vd->setLogoFile(basename(__DIR__) . '/../view/utente/logo.php');
-        $vd->setLeftBarFile(basename(__DIR__) . '/../view/utente/leftBar.php');
-        $vd->setRightBarFile(basename(__DIR__) . '/../view/utente/rightBar.php');
-        $vd->setContentFile(basename(__DIR__) . '/../view/utente/content.php');
+        $vd->setTitolo("MusicAMM - Cliente ");
+        $vd->setLogoFile(basename(__DIR__) . '/../view/cliente/logo.php');
+        $vd->setLeftBarFile(basename(__DIR__) . '/../view/cliente/leftBar.php');
+        $vd->setContentFile(basename(__DIR__) . '/../view/cliente/content.php');
     }
 
-    /**
-     * Imposta la vista master.php per visualizzare la pagina di gestione
-     * del docente
-     * @param ViewDescriptor $vd il descrittore della vista
-     */
-/*    protected function showHomeDocente($vd) {
-        // mostro la home dei docenti
-        $vd->setTitolo("esAMMi - gestione docente ");
-        $vd->setMenuFile(basename(__DIR__) . '/../view/docente/menu.php');
-        $vd->setLogoFile(basename(__DIR__) . '/../view/docente/logo.php');
-        $vd->setLeftBarFile(basename(__DIR__) . '/../view/docente/leftBar.php');
-        $vd->setRightBarFile(basename(__DIR__) . '/../view/docente/rightBar.php');
-        $vd->setContentFile(basename(__DIR__) . '/../view/docente/content.php');
-    }
-*/
     /**
      * Imposta la vista master.php per visualizzare la pagina di gestione
      * dell'amministratore
@@ -134,11 +112,9 @@ class BaseController {
     protected function showHomeAmministratore($vd) {
         // mostro la home degli amministratori
 
-        $vd->setTitolo("esAMMi - Super User ");
-        $vd->setMenuFile(basename(__DIR__) . '/../view/amministratore/menu.php');
+        $vd->setTitolo("MusicAMM - Amministratore ");
         $vd->setLogoFile(basename(__DIR__) . '/../view/amministratore/logo.php');
         $vd->setLeftBarFile(basename(__DIR__) . '/../view/amministratore/leftBar.php');
-        $vd->setRightBarFile(basename(__DIR__) . '/../view/amministratore/rightBar.php');
         $vd->setContentFile(basename(__DIR__) . '/../view/amministratore/content.php');
     }
 
@@ -149,30 +125,13 @@ class BaseController {
     protected function showHomeUtente($vd) {
         $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
         switch ($user->getRuolo()) {
-            case User::Utente:
-                $this->showHomeStudente($vd);
+            case User::Cliente:
+                $this->showHomeCliente($vd);
                 break;
-/*
-            case User::Docente:
-                $this->showHomeDocente($vd);
-                break;
-*/
+
             case User::Amministratore:
                 $this->showHomeAmministratore($vd);
                 break;
-        }
-    }
-
-    /**
-     * Imposta la variabile del descrittore della vista legato 
-     * all'utente da impersonare nel caso sia stato specificato nella richiesta
-     * @param ViewDescriptor $vd il descrittore della vista
-     * @param array $request la richiesta
-     */
-    protected function setImpToken(ViewDescriptor $vd, &$request) {
-
-        if (array_key_exists('_imp', $request)) {
-            $vd->setImpToken($request['_imp']);
         }
     }
 
@@ -215,7 +174,7 @@ class BaseController {
     }
 
     /**
-     * Aggiorno l'indirizzo di un utente (comune a Studente e Docente)
+     * Aggiorno l'indirizzo di un utente (comune a Cliente e Amministratore)
      * @param User $user l'utente da aggiornare
      * @param array $request la richiesta http da gestire
      * @param array $msg riferimento ad un array da riempire con eventuali
@@ -238,16 +197,6 @@ class BaseController {
                 $msg[] = '<li>La citt&agrave; specificata non &egrave; corretta</li>';
             }
         }
-        if (isset($request['provincia'])) {
-            if (!$user->setProvincia($request['provincia'])) {
-                $msg[] = '<li>La provincia specificata &egrave; corretta</li>';
-            }
-        }
-        if (isset($request['cap'])) {
-            if (!$user->setCap($request['cap'])) {
-                $msg[] = '<li>Il CAP specificato non &egrave; corretto</li>';
-            }
-        }
 
         // salviamo i dati se non ci sono stati errori
         if (count($msg) == 0) {
@@ -258,7 +207,7 @@ class BaseController {
     }
 
     /**
-     * Aggiorno l'indirizzo email di un utente (comune a Studente e Docente)
+     * Aggiorno l'indirizzo email di un utente (comune a Cliente e Amministratore)
      * @param User $user l'utente da aggiornare
      * @param array $request la richiesta http da gestire
      * @param array $msg riferimento ad un array da riempire con eventuali
@@ -280,7 +229,7 @@ class BaseController {
     }
 
     /**
-     * Aggiorno la password di un utente (comune a Studente e Docente)
+     * Aggiorno la password di un utente (comune a Cliente e Amministratore)
      * @param User $user l'utente da aggiornare
      * @param array $request la richiesta http da gestire
      * @param array $msg riferimento ad un array da riempire con eventuali
@@ -327,7 +276,6 @@ class BaseController {
             $vd->setMessaggioConferma($okMsg);
         }
     }
-
 }
 
 ?>

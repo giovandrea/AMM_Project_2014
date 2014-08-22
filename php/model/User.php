@@ -6,17 +6,6 @@
 class User {
 
     /**
-     * Costante che definisce il ruolo docente
-     */
-    const Docente = 1;
-    
-    /**
-     * Costante che definisce il ruolo studente
-     */
-    const Studente = 2;
-
-    
-    /**
      * Username per l'autenticazione
      * @var string
      */
@@ -46,12 +35,6 @@ class User {
      */
     private $email;
     
-    /**
-     * Il ruolo dell'utente nell'applicazione.
-     * Lo utilizzo per implementare il controllo degli accessi
-     * @var int 
-     */
-    private $ruolo;
     /**
      * Via dell'abitazione dell'utente
      * @var string
@@ -96,16 +79,7 @@ class User {
     }
 
     /**
-     * Verifica se l'utente esista per il sistema
-     * @return boolean true se l'utente esiste, false altrimenti
-     */
-    public function esiste() {
-        // implementazione di comodo, va fatto con il db
-        return isset($this->ruolo);
-    }
-
-    /**
-     * Restituisce lo username dell'utente
+     * Restituisce l'username dell'utente
      * @return string
      */
     public function getUsername() {
@@ -188,31 +162,6 @@ class User {
     }
 
     /**
-     * Restituisce un intero 
-     * @return int
-     */
-    public function getRuolo() {
-        return $this->ruolo;
-    }
-
-    /**
-     * Imposta un ruolo per un dato utente
-     * @param int $ruolo
-     * @return boolean true se il valore e' ammissibile ed e' stato impostato,
-     * false altrimenti
-     */
-    public function setRuolo($ruolo) {
-        switch ($ruolo) {
-            case self::Docente:
-            case self::Studente:
-                $this->ruolo = $ruolo;
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    /**
      * Restituisce l'email dell'utente
      * @return string
      */
@@ -251,7 +200,6 @@ class User {
         $this->via = $via;
         return true;
     }
-
     
     /**
      * Restituisce il valore del numero civico di abitazione dell'utente
@@ -336,7 +284,6 @@ class User {
         return true;
     }
 
-    
     /**
      * Restituisce un identificatore unico per l'utente
      * @return int
