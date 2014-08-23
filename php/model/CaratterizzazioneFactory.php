@@ -1,7 +1,7 @@
 <?php
 
-include_once 'NuovoCD.php';
-include_once 'NuovoCDFactory.php';
+include_once 'Artista.php';
+include_once 'ArtistaFactory.php';
 include_once 'Caratterizzazione.php';
 include_once 'Db.php';
 

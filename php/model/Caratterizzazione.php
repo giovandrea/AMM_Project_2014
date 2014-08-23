@@ -4,7 +4,12 @@
  * Classe che descrive le proprietà di un generico CD
  */
 
-class Modello {
+class Caratterizzazione {
+    /**
+     * Id univoco della caratterizzazione del CD
+     * @var int
+     */
+    private $id;
     /**
      * artista dell'artista del CD
      * @var String
@@ -16,18 +21,34 @@ class Modello {
      * @var String
      */
     private $titolo;
-
-    /**
-     * Anno di pubblicazione del CD
-     * @var int
-     */
-    private $anno;
     
     /**
      * Prezzo del CD
      * @var double
      */
     private $prezzo;
+
+    /**
+     * Restituisce un identificatore unico per il cd
+     * @return int
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * Imposta un identificatore unico per il cd
+     * @param int $id
+     * @return boolean true se il valore e' stato aggiornato correttamente,
+     * false altrimenti
+     */
+    public function setId($id) {
+        $intVal = filter_var($id, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+        if (!isset($intVal)) {
+            return false;
+        }
+        $this->id = $intVal;
+    }
 
     public function setArtista($artista) {
         $this->artista = $artista;
@@ -54,15 +75,6 @@ class Modello {
     public function setPrezzo($prezzo) {
         $this->prezzo = $prezzo;
     }
-
-    public function getAnno() {
-        return $this->anno;
-    }
-
-    public function setAnno($anno) {
-        $this->anno = $anno;
-    }
-
 }
 
 ?>

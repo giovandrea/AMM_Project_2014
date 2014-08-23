@@ -8,6 +8,12 @@
 class CD {
 
     /**
+     * Id univoco del CD
+     * @var int
+     */
+    private $id;
+
+    /**
      * Caratterizzazione del CD
      * @var Caratterizzazione
      */

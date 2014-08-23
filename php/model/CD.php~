@@ -8,6 +8,12 @@
 class CD {
 
     /**
+     * Id univoco del CD
+     * @var int
+     */
+    private $id;
+
+    /**
      * Caratterizzazione del CD
      * @var Caratterizzazione
      */
@@ -20,11 +26,11 @@ class CD {
     private $anno;
 
     /**
-     * Flag che memorizza se la macchina è prenotabile
+     * Flag che memorizza se la macchina è acquistabile
      * (non attualmente prenotata)
      * @var boolean
      */
-    private $prenotabile;
+    private $acquistabile;
 
     /**
      * Costruttore
@@ -70,17 +76,17 @@ class CD {
         return $this->anno;
     }
 
-    public function setPrenotabile($flag) {
+    public function setAcquistabile($flag) {
         $bool = filter_var($flag, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
         if (isset($bool)) {
-            $this->prenotabile = $bool;
+            $this->acquistabile = $bool;
             return true;
         }
         return false;
     }
 
-    public function isPrenotabile() {
-        return $this->prenotabile;
+    public function isAcquistabile() {
+        return $this->acquistabile;
     }
 
     public function setCaratterizzazione($caratterizzazione) {
@@ -89,14 +95,6 @@ class CD {
 
     public function getCaratterizzazione() {
         return $this->caratterizzazione;
-    }
-
-    public function getTarga() {
-        return $this->targa;
-    }
-
-    public function setTarga($targa) {
-        $this->targa = $targa;
     }
 
 }

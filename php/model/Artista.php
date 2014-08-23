@@ -14,7 +14,7 @@ class Artista {
     }
     
     public function getNome(){
-        return $this->anome;
+        return $this->nome;
     }
     
     /**
