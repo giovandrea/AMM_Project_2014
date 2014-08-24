@@ -33,7 +33,7 @@ class BaseController {
         // imposto la pagina
         $vd->setPagina($request['page']);
 
-        // gestion dei comandi
+        // gestione dei comandi
         // tutte le variabili che vengono create senza essere utilizzate 
         // direttamente in questo switch, sono quelle che vengono poi lette
         // dalla vista, ed utilizzano le classi del modello
@@ -82,11 +82,9 @@ class BaseController {
      */
     protected function showLoginPage($vd) {
         // mostro la pagina di login
-        $vd->setTitolo("MusicAMM - login");
-        $vd->setMenuFile(basename(__DIR__) . '/../view/login/menu.php');
+        $vd->setTitolo("MusicAMM - login");       
         $vd->setLogoFile(basename(__DIR__) . '/../view/login/logo.php');
         $vd->setLeftBarFile(basename(__DIR__) . '/../view/login/leftBar.php');
-        $vd->setRightBarFile(basename(__DIR__) . '/../view/login/rightBar.php');
         $vd->setContentFile(basename(__DIR__) . '/../view/login/content.php');
     }
 

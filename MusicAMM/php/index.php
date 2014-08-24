@@ -1,6 +1,5 @@
 <?php
 
-
 include_once 'controller/BaseController.php';
 include_once 'controller/ClienteController.php';
 include_once 'controller/AmministratoreController.php';
@@ -32,14 +31,14 @@ class FrontController {
                     $controller->handleInput($request);
                     break;
 
-                // utente
-                case 'utente':
-                    // la pagina degli utenti e' accessibile solo utenti
+                // cliente
+                case 'cliente':
+                    // la pagina dei clienti e' accessibile solo ai clienti
                     // ed agli amminstratori
                     // il controllo viene fatto dal controller apposito
-                    $controller = new UtenteController();
+                    $controller = new ClienteController();
                     if (isset($_SESSION[BaseController::role]) &&
-                        $_SESSION[BaseController::role] != User::Utente) {
+                        $_SESSION[BaseController::role] != User::Cliente) {
                         self::write403();
                     }
                     $controller->handleInput($request);
@@ -47,7 +46,7 @@ class FrontController {
 
                 // amministratore
                 case 'amministratore':
-                    // la pagina dell'amministratore e' accessibile solo
+                    // la pagina degli amministratori e' accessibile solo
                     // agli amministratori
                     // il controllo viene fatto dal controller apposito
                     $controller = new AmministratoreController();
@@ -84,7 +83,7 @@ class FrontController {
      * per accedere alla pagina
      */
     public static function write403() {
-        // impostiamo il codice della risposta http a 404 (file not found)
+        // impostiamo il codice della risposta http a 403 (forbidden)
         header('HTTP/1.0 403 Forbidden');
         $titolo = "Accesso negato";
         $messaggio = "Non hai i diritti per accedere a questa pagina";

@@ -1,7 +1,7 @@
 <?php
 
 include_once 'BaseController.php';
-include_once basename(__DIR__) . '/../model/CD.php';
+include_once basename(__DIR__) . '/../model/cd.php';
 include_once basename(__DIR__) . '/../model/CDFactory.php';
 include_once basename(__DIR__) . '/../model/UserFactory.php';
 
@@ -54,48 +54,48 @@ class AmministratoreController extends BaseController {
                         break;
 
                     // visulizzazione elenco ordini
-                    case 'ordini':
-                        $ordini = CatalogoFactory::instance()->getCatalogo();
+                    case 'acquisti':
+                        $acquisti = CDFactory::instance()->getCD();
  			$clienti = UserFactory::instance()->getListaClienti();
-                        $vd->setSottoPagina('ordine');
+                        $vd->setSottoPagina('acquisti');
 
                         $vd->addScript("../js/jquery-2.1.1.min.js");
                         $vd->addScript("../js/elencoAcquisti.js");
                         break;
 
-                    // gestione della richiesta ajax di filtro ordini
-                    case 'filtra_ordini':
+                    // gestione della richiesta ajax di filtro acquisti
+                    case 'filtra_acquisti':
                         $vd->toggleJson();
-                        $vd->setSottoPagina('ordini_json');
+                        $vd->setSottoPagina('acquisti_json');
                         $errori = array();
 
-                        if (isset($request['CD']) && ($request['CD'] != '')) {
-                            $CD_id = filter_var($request['CD'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
-                            if ($CD_id == null) {
-                                $errori['CD'] = "Specificare un identificatore valido";
+                        if (isset($request['cd']) && ($request['cd'] != '')) {
+                            $cd_id = filter_var($request['cd'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+                            if ($cd_id == null) {
+                                $errori['cd'] = "Specificare un identificatore valido";
                             }
                         } else {
-                            $CD_id = null;
+                            $cd_id = null;
                         }
 
                         if (isset($request['cliente']) && ($request['cliente'] != '')) {
                             $cliente_id = filter_var($request['cliente'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if ($cliente_id == null) {
-                                $errori['cliente'] = "Specificare una matricola valida";
+                                $errori['cliente'] = "Specificare un nome valido";
                             }
                         } else {
                             $cliente_id = null;
                         }
 
-                        $ordini = OrdiniFactory::instance()->ricercaOrdine(
-                                $user, $CD_id, $cliente_id);
+                        $acquisti = AcquistiFactory::instance()->ricercaAcquisti(
+                                $user, $cd_id, $cliente_id);
 
                         break;
 
                     //visualizzazione del catalogo
                     case 'catalogo':
-                        $veicoli = CatalogoFactory::instance()->getCatalogo();                        
-                        $vd->setSottoPagina('parco_auto');
+                        $veicoli = CDFactory::instance()->getCD();                        
+                        $vd->setSottoPagina('catalogo_cd');
                         break;
 
             // gestione dei comandi inviati dall'utente
@@ -138,57 +138,52 @@ class AmministratoreController extends BaseController {
                         break;
 
                     // l'utente non vuole modificare l'ordine selezionato
-                    case 'a_annulla':
-                        $vd->setSottoPagina('catalogo');
+                    case 'cd_annulla':
+                        $vd->setSottoPagina('catalogo_cd');
                         $this->showHomeUtente($vd);
                         break;
 
-                    // creazione di un nuovo CD
-                    case 'CD_nuovo':
-                        $vd->setSottoPagina('catalogo_CD');
+                    // creazione di un nuovo cd
+                    case 'cd_nuovo':
+                        $vd->setSottoPagina('catalogo_cd');
                         $msg = array();
                         $nuovo = new CD();
                         $nuovo->setId(-1);
-                        $nuovo->setModello(ModelloFactory::instance()->getModelloPerId($request['modello']));
+                        $nuovo->setCaratterizzazione(CaratterizzazioneFactory::instance()->getCaratterizzazionePerId($request['caratterizzazione']));
 
-                        if ($request['artista'] != "") {
-                            $nuovo->setArtista($request['artista']);
-                        } else {
-                            $msg[] = '<li> Inserire un artista valido </li>';
-                        }
-                        if ($request['titolo'] != "") {
-                            $nuovo->setTitolo($request['titolo']);
-                        } else {
-                            $msg[] = '<li> Inserire un titolo valido </li>';
-                        }
+ 			if ($request['anno'] != "") {
+				$nuovo->setAnno($request['anno']);
+			} else {
+				$msg[] = '<li> Inserire un anno valido </li>';
+			}
 
                         if (count($msg) == 0) {
-                            $vd->setSottoPagina('catalogo_CD');
+                            $vd->setSottoPagina('catalogo_cd');
                             if (CatalogoFactory::instance()->nuovo($nuovo) != 1) {
-                                $msg[] = '<li> Impossibile aggiungere il CD</li>';
+                                $msg[] = '<li> Impossibile aggiungere il cd</li>';
                             }
                         }
                         
-                        $this->creaFeedbackUtente($msg, $vd, "Nuovo CD inserito");
+                        $this->creaFeedbackUtente($msg, $vd, "Nuovo cd inserito");
                         
-                        $veicoli = CatalogoFactory::instance()->getCatalogo();
+                        $veicoli = CD::instance()->getCD();
                         $this->showHomeUtente($vd);
                         break;
 
-                    // cancella un CD
-                    case 'cancella_CD':
-                        if (isset($request['CD'])) {
-                            $intVal = filter_var($request['CD'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+                    // cancella un cd
+                    case 'cancella_cd':
+                        if (isset($request['cd'])) {
+                            $intVal = filter_var($request['cd'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if (isset($intVal)) {
 
-                                if (CatalogoFactory::instance()->cancellaPerId($intVal) < 1) {
-                                    $msg[] = '<li> Impossibile cancellare il CD </li>';
+                                if (CDFactory::instance()->cancellaPerId($intVal) < 1) {
+                                    $msg[] = '<li> Impossibile cancellare il cd </li>';
                                 }
 
-                                $this->creaFeedbackUtente($msg, $vd, "CD eliminato");
+                                $this->creaFeedbackUtente($msg, $vd, "cd eliminato");
                             }
                         }
-                        $veicoli = CatalogoFactory::instance()->getCatalogo();
+                        $veicoli = CDFactory::instance()->getCD();
                         $this->showHomeUtente($vd);
                         break;
                
@@ -210,8 +205,8 @@ class AmministratoreController extends BaseController {
         // richiamo la vista
         require basename(__DIR__) . '/../view/master.php';
     	}
-       }
-      }
+     }
+   }
 }
 
 ?>

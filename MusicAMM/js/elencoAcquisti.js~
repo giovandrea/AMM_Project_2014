@@ -28,20 +28,20 @@ $(document).ready(function () {
                         $("#nessuno").show();
                        
                         // nascondo la tabella
-                        $("#tabella_acquisti").hide();
+                        $("#tabella_ordini").hide();
 
                     }else{
                         // nascondo il messaggio per nessun elemento
                         $("#nessuno").hide();
-                        $("#tabella_acquisti").show();
+                        $("#tabella_ordini").show();
                         //cancello tutti gli elementi dalla tabella
-                        $("#tabella_acquisti tbody").empty();
+                        $("#tabella_ordini tbody").empty();
                        
                         // aggingo le righe
                         var i = 0;
-                        for(var key in data['acquisti']){
-                            var esame = data['acquisti'][key];
-                            $("#tabella_acquisti tbody").append(
+                        for(var key in data['ordini']){
+                            var esame = data['ordini'][key];
+                            $("#tabella_ordini tbody").append(
                                 "<tr id=\"row_" + i + "\" >\n\
                                        <td>a</td>\n\
                                        <td>a</td>\n\

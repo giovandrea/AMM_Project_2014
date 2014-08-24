@@ -26,7 +26,6 @@ class ClienteController extends BaseController {
         // creo il descrittore della vista
         $vd = new ViewDescriptor();
 
-
         // imposto la pagina
         $vd->setPagina($request['page']);
 
@@ -60,9 +59,9 @@ class ClienteController extends BaseController {
                         break;
 
                     // visualizzazione degli ordini effettuati
-                    case 'ordini':
+                    case 'acquisti':
                         $ordini = OrdiniFactory::instance()->ordiniPerCliente($user);
-                        $vd->setSottoPagina('ordini');
+                        $vd->setSottoPagina('acquisti');
                         break;
 
                     // visualizzazione del catalogo
@@ -70,8 +69,8 @@ class ClienteController extends BaseController {
                         $catalogo = CatalogoFactory::instance()->getCatalogo();
                         $vd->setSottoPagina('catalogo');
                         break;
-                    default:
 
+                    default:
                         $vd->setSottoPagina('home');
                         break;
                 }
@@ -100,6 +99,7 @@ class ClienteController extends BaseController {
 
                     // cambio email
                     case 'email':
+
                         // in questo array inserisco i messaggi di 
                         // cio' che non viene validato
                         $msg = array();
@@ -110,6 +110,7 @@ class ClienteController extends BaseController {
 
                     // cambio password
                     case 'password':
+
                         // in questo array inserisco i messaggi di 
                         // cio' che non viene validato
                         $msg = array();
@@ -120,7 +121,8 @@ class ClienteController extends BaseController {
 
                     // instaurazione acquisto
                     case 'acquista':
-                        $idcd = filter_var($request['CD'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+
+                        $idcd = filter_var($request['cd'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                         if (isset($idcd)) {
 
                             $vd->setSottoPagina('acquisto');
@@ -132,18 +134,17 @@ class ClienteController extends BaseController {
 		    case 'nuovo_acquisto':
 			$vd->setSottoPagina('catalogo');
                         $msg = array();
-                        $nuova = new Ordine();
+                        $nuova = new Acquisto();
 
-			$nuova->setCatalogo(CatalogoFactory::instance()->getCatalogoPerId($request['idcd']));
+			$nuova->setCd(CDFactory::instance()->getCDPerId($request['idcd']));
                         $nuova->setCliente($user);
+ 			$this->creaFeedbackUtente($msg, $vd, "Acquisto eseguito, costo: ". $nuova->getCosto()." €");
+			$cd = CDFactory::instance()->getCD();
+			$this->showHomeUtente($vd);
+			break;
 
-			/*qui è da inserire tutta la parte relativa all'inserimento dei dati dei CD (Artista e Titolo)
-			  ci vogliono due form e al momento non so come inserirli
-			*/
-                   
-                        $this->showHomeUtente($vd);
-                        break;
-                    default : $this->showLoginPage($vd);
+                    default : 
+			$this->showLoginPage($vd);
                 }
             } else {
                 // nessun comando
