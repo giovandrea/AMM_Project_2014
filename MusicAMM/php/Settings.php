@@ -11,7 +11,7 @@ class Settings {
     public static $db_host = 'localhost';
     public static $db_user = 'atzeniAndrea';
     public static $db_password = 'scoiattolo262';
-    public static $db_name='prova';
+    public static $db_name='amm14_atzeniAndrea';
     
     private static $appPath;
 
