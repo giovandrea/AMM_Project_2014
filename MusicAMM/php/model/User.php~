@@ -112,7 +112,7 @@ class User {
      */
     public function setRuolo($ruolo) {
         switch ($ruolo) {
-            case self::Amministratore:
+            case self::Dipendente:
             case self::Cliente:
                 $this->ruolo = $ruolo;
                 return true;

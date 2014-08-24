@@ -13,8 +13,6 @@ include_once basename(__DIR__) . '/../model/UserFactory.php';
  */
 class AmministratoreController extends BaseController {
 
-    const elenco = 'elenco';
-
     public function __construct() {
         parent::__construct();
     }
