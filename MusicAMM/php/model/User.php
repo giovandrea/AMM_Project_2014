@@ -363,6 +363,14 @@ class User {
                 $this->ruolo == $user->ruolo;
     }
 
+    /**
+     * Verifica se l'utente esista per il sistema
+     * @return boolean true se l'utente esiste, false altrimenti
+     */
+    public function esiste() {
+        return isset($this->ruolo);
+    }
+
 }
 
 ?>
