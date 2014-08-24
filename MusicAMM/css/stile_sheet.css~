@@ -20,11 +20,9 @@ header {
 #header{
     background-image: url('../images/logo.jpg');
     background-repeat: no-repeat;
-    background-position: center left;
-    height: 100px;
+    background-position: center;
+    height: 50px;
     padding-left: 120px;
-    vertical-align: middle;
-    line-height: 100px;
 }
 
 div.error {
