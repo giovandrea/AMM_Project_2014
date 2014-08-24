@@ -45,7 +45,7 @@ if (!$vd->isJson()) {
                         ?>
                         <ul>
                             <li id="facebook"><a href="www.facebook.com">facebook</a></li>
-                            <li id="twitter"><a href="https://twitter.com/">twitter</a></li>/li>
+                            <li id="twitter"><a href="https://twitter.com/">twitter</a></li>
                         </ul>
                     </div>
                     <!--  header -->
