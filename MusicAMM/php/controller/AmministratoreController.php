@@ -1,7 +1,7 @@
 <?php
 
 include_once 'BaseController.php';
-include_once basename(__DIR__) . '/../model/cd.php';
+include_once basename(__DIR__) . '/../model/CD.php';
 include_once basename(__DIR__) . '/../model/CDFactory.php';
 include_once basename(__DIR__) . '/../model/UserFactory.php';
 
