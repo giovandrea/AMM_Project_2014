@@ -212,8 +212,7 @@ class UserFactory {
         $cliente->setRuolo(User::Cliente);
         $cliente->setUsername($row['clienti_username']);
         $cliente->setPassword($row['clienti_password']);
-        $cliente->setNumeroTel($row['clienti_numerotel']);
-
+  
         return $cliente;
     }
 
@@ -348,7 +347,7 @@ class UserFactory {
     }
 
     /**
-     * Carica un dipentente eseguendo un prepared statement
+     * Carica un amministratore eseguendo un prepared statement
      * @param mysqli_stmt $stmt
      * @return null
      */

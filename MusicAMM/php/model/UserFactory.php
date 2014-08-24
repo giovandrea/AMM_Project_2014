@@ -212,8 +212,7 @@ class UserFactory {
         $cliente->setRuolo(User::Cliente);
         $cliente->setUsername($row['clienti_username']);
         $cliente->setPassword($row['clienti_password']);
-        $cliente->setNumeroTel($row['clienti_numerotel']);
-
+  
         return $cliente;
     }
 
@@ -234,8 +233,7 @@ class UserFactory {
         $Amministratore->setRuolo(User::Amministratore);
         $Amministratore->setUsername($row['amministratori_username']);
         $Amministratore->setPassword($row['amministratori_password']);
-        $Amministratore->setNumeroTel($row['amministratori_numerotel']);
-
+ 
         return $Amministratore;
     }
 
