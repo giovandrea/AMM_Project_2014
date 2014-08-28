@@ -6,7 +6,7 @@
 </div>
 <div class="input-form">
     <h3>Filtro</h3>
-    <form method="get" action="dipendente/ordini">
+    <form method="get" action="amministratore/ordini">
         <label for="cd">CD</label>
         <select name="cd" id="cd">
             <option value="">Qualsiasi</option>
@@ -36,7 +36,7 @@
 <table id="tabella_ordini">
     <thead>
         <tr>
-            <th>utente</th>
+            <th>Utente</th>
             <th>Album</th>
             <th>Costo</th>
         </tr>

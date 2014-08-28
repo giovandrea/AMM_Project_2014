@@ -31,9 +31,9 @@ switch ($vd->getSottoPagina()) {
             Scegli una fra le seguenti sezioni:
         </p>
         <ul>
-            <li><a href="dipendente/anagrafica">Anagrafica</a></li>
-            <li><a href="dipendente/auto">Catalogo</a></li>
-            <li><a href="dipendente/noleggi">Ordini</a></li>
+            <li><a href="amministratore/anagrafica">Anagrafica</a></li>
+            <li><a href="amministratore/catalogo">Catalogo</a></li>
+            <li><a href="amministratore/ordini">Ordini</a></li>
         </ul>
         <?php
         break;

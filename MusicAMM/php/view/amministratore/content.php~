@@ -4,26 +4,26 @@ switch ($vd->getSottoPagina()) {
         include 'anagrafica.php';
         break;
 
-    case 'noleggi':
-        include 'noleggi.php';
+    case 'ordini':
+        include 'ordini.php';
         break;
 
-    case 'noleggi_json':
-        include 'noleggi_json.php';
+    case 'ordini_json':
+        include 'ordini_json.php';
         break;
 
-    case 'parco_auto':
-        include 'parco_auto.php';
+    case 'catalogo_cd':
+        include 'catalogo_cd.php';
         break;
     
-    case 'crea_veicolo':
-        include 'crea_veicolo.php';
+    case 'aggiungi_nuovo_cd':
+        include 'aggiungi_nuovo_cd.php';
         break;
         ?>
 
 
     <?php default: ?>
-        <h2>Pannello di Controllo</h2>
+        <h2>Menu</h2>
         <p>
             Benvenuto, <?= $user->getNome() ?>
         </p>
@@ -32,8 +32,8 @@ switch ($vd->getSottoPagina()) {
         </p>
         <ul>
             <li><a href="dipendente/anagrafica">Anagrafica</a></li>
-            <li><a href="dipendente/auto">Parco auto</a></li>
-            <li><a href="dipendente/noleggi">Noleggi</a></li>
+            <li><a href="dipendente/auto">Catalogo</a></li>
+            <li><a href="dipendente/noleggi">Ordini</a></li>
         </ul>
         <?php
         break;

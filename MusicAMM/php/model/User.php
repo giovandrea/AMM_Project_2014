@@ -6,13 +6,13 @@
 class User {
 
     /**
-     * Costante che definisce il ruolo dipendente
+     * Costante che definisce il ruolo Cliente
      */
 
     const Cliente = 2;
 
     /**
-     * Costante che definisce il ruolo cliente
+     * Costante che definisce il ruolo Amministratore
      */
     const Amministratore = 1;
 

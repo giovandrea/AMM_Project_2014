@@ -12,6 +12,7 @@ foreach ($ordini as $ordine) {
 
     $json['noleggi'][] = $element;
 }
+
 echo json_encode($json);
 
 ?>

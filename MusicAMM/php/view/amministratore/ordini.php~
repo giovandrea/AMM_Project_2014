@@ -6,7 +6,7 @@
 </div>
 <div class="input-form">
     <h3>Filtro</h3>
-    <form method="get" action="dipendente/ordini">
+    <form method="get" action="amministratore/ordini">
         <label for="cd">CD</label>
         <select name="cd" id="cd">
             <option value="">Qualsiasi</option>
@@ -33,14 +33,11 @@
 
 <p id="nessuno">Nessun CD trovato</p>
 
-<table id="tabella_noleggi">
+<table id="tabella_ordini">
     <thead>
         <tr>
             <th>utente</th>
-            <th>Veicolo</th>
-            <th>Targa</th>
-            <th>Data inizio</th>
-            <th>Data fine</th>
+            <th>Album</th>
             <th>Costo</th>
         </tr>
     </thead>
