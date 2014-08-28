@@ -6,7 +6,7 @@
 body {
     background-color: #ffffff;
     font: 14px/21px "Courier New",Arial,sans-serif;
-    width: 1050px;
+    width: 850px;
     margin: 0px auto;
 }
 
@@ -58,7 +58,7 @@ header {
 
 #footer{
     text-align: center;
-    background-color: #1c345a;
+    background-color: #ffffff;
     padding: 10px;
     padding-bottom: 10px;
     color: white;
