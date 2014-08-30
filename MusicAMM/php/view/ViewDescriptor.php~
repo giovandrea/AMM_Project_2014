@@ -6,11 +6,12 @@
  * @author amm
  */
 class ViewDescriptor {
+
     /**
      * GET http
      */
-
     const get = 'get';
+
     /**
      * Post HTTP
      */
@@ -300,7 +301,7 @@ class ViewDescriptor {
     
     /**
      * Restituisce il valore corrente del token per fare in modo che
-     * un amministratore possa impersonare uno studente o un docente
+     * un amministratore possa impersonare un utente
      * @param string $token
      */
     public function setImpToken($token) {
@@ -313,7 +314,7 @@ class ViewDescriptor {
      * 
      * Questo metodo concentra in un solo punto il mantenimento di questa
      * informazione, che deve essere appesa per ogni get e per ogni post
-     * quando si accede all'interfaccia dello studente o del docente 
+     * quando si accede all'interfaccia dell'utente
      * in modalita' amministratore, in modo che possano essere impersonati 
      * piu' utenti tramite diversi schede dello stesso browser
      * 

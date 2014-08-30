@@ -39,13 +39,8 @@ if (!$vd->isJson()) {
             <div id="page">
                 <header>
                     <div class="social">
-                        <?php
-                        $logo = $vd->getLogoFile();
-                        require "$logo";
-                        ?>
-                        <ul>
                             <li id="facebook"><a href="www.facebook.com">facebook</a></li>
-                            <li id="twitter"><a href="https://twitter.com/">twitter</a></li>/li>
+                            <li id="twitter"><a href="https://twitter.com/">twitter</a></li>
                         </ul>
                     </div>
                     <!--  header -->
@@ -53,8 +48,14 @@ if (!$vd->isJson()) {
                         <div id="logo">
                             <h1>MusicAMM</h1>
                         </div>
-                    </div>
+ 			<div id="top">
+				<?php
+				$logo = $vd->getLogoFile();
+				require "$logo";
+				?>
+                    	</div>
                 </header>
+
                 <!-- start page -->
                 <!--  sidebar 1 -->
                 <div id="sidebar1">

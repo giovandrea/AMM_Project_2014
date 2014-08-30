@@ -3,14 +3,15 @@
 /**
  * Struttura dati per popolare la vista generica master.php
  *
- * @author amm
+ * @author Andrea Atzeni
  */
 class ViewDescriptor {
+
     /**
      * GET http
      */
-
     const get = 'get';
+
     /**
      * Post HTTP
      */
