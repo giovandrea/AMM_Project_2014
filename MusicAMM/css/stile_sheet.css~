@@ -17,6 +17,11 @@ header {
     padding-bottom: 30px;
 }
 
+footer {
+    background-color: #996666;
+    color: white;
+}
+
 #header{
     background-image: url('../images/logo.png');
     background-repeat: no-repeat;
@@ -68,7 +73,7 @@ header {
 }
 
 #footer a:link, #footer a:visited{
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
