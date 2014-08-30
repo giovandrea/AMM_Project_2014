@@ -1,29 +1,22 @@
-
-<h2>Parco auto</h2>
+<h2>Catalogo CD</h2>
 <table>
     <tr>
-        <th>Costruttore</th>
-        <th>Modello</th>
-        <th>Targa</th>
-        <th>Anno imm.</th>
-        <th>Potenza</th>
-        <th>Cilindrata</th>
+        <th>Artista</th>
+        <th>Titolo Album</th>
+        <th>Anno Pubblicazione</th>
         <th>Prezzo</th>
-        <th>Prenota</th>        
+        <th>Cancella</th>
     </tr>
     <?
-    foreach ($veicoli as $veicolo) {
-        ?>
-        <tr>
-            <td><?= $veicolo->getModello()->getCostruttore()->getNome() ?></td>
-            <td><?= $veicolo->getModello()->getNome() ?></td>
-            <td><?= $veicolo->getTarga() ?></td>
-            <td><?= $veicolo->getAnno() ?></td>
-            <td><?= $veicolo->getModello()->getPotenza() . " cv" ?></td>        
-            <td><?= $veicolo->getModello()->getCilindrata() . " cm<sup>3</sup>" ?></td>
-            <td><?= $veicolo->getModello()->getPrezzo() . " €/giorno" ?></td>
-            <td><a href="cliente/veicoli?cmd=prenota&veicolo=<?= $veicolo->getId() ?>" title="Prenota il veicolo">
-                    <img src="../img/prenota.png" alt="Prenota"></a></td>
+    foreach($CDs as $CD){
+    ?>
+    <tr>
+        <td><?= $CD->getArtista() ?></td>
+        <td><?= $CD->getTitolo() ?></td>
+        <td><?= $CD->getAnno() ?></td>
+        <td><?= $CD->getPrezzo() ?></td>
+            <td><a href="cliente/ordini?cmd=prenota&CD=<?= $CD->getId() ?>" title="Compra il CD">
+                    <img src="../images/prenota.png" alt="Acquista"></a></td>
         </tr>
     <? } ?>
 </table>

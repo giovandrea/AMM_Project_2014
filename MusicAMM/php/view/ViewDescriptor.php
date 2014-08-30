@@ -42,12 +42,6 @@ class ViewDescriptor {
     private $leftBar_file;
 
     /**
-     * File che include la definizione HTML della sidebar destra
-     * @var string 
-     */
-    private $rightBar_file;
-
-    /**
      * File che include la definizione HTML del contenuto principale
      * @var string 
      */
@@ -172,22 +166,6 @@ class ViewDescriptor {
         $this->leftBar_file = $leftBar;
     }
 
-    /**
-     * Imposta il file che include la definizione HTML della sidebar destra
-     * @return string
-     */
-    public function getRightBarFile() {
-        return $this->rightBar_file;
-    }
-    
-    /**
-     * Imposta il path al file che include la definizione HTML della sidebar destra
-     * @param type $rightBar
-     */
-    public function setRightBarFile($rightBar) {
-        $this->rightBar_file = $rightBar;
-    }
-
      /**
      * Imposta il file che include la definizione HTML del contenuto principale
      * @return string
@@ -298,58 +276,5 @@ class ViewDescriptor {
     public function toggleJson(){
         $this->json = true;
     }
-    
-    /**
-     * Restituisce il valore corrente del token per fare in modo che
-     * un amministratore possa impersonare un utente
-     * @param string $token
-     */
-    public function setImpToken($token) {
-        $this->impToken = $token;
-    }
-
-    /**
-     * Scrive un token per gestire quale sia l'utente che l'amministratore
-     * sta impersonando per svolgere delle operazioni in sua vece. 
-     * 
-     * Questo metodo concentra in un solo punto il mantenimento di questa
-     * informazione, che deve essere appesa per ogni get e per ogni post
-     * quando si accede all'interfaccia dell'utente
-     * in modalita' amministratore, in modo che possano essere impersonati 
-     * piu' utenti tramite diversi schede dello stesso browser
-     * 
-     * Se avessimo inserito questa informazione in sessione, sarebbe stato 
-     * possibile gestirne solo uno. Inoltre, in caso di piu' schede aperte con 
-     * lo stesso browser, i dati sarebbero stati mescolati.
-     * 
-     * Questo e' un esempio di gestione di variabili a livello pagina. 
-     * 
-     * @param string $pre il prefisso per attaccare il parametro del token nella 
-     * query string. Si usi '?' se il token e' il primo parametro e '&' altrimenti
-     * @param int $method metodo HTTP (get o set)
-     * @return string il valore da scrivere nella URL in caso di get o come
-     * hidden input in caso di form
-     */
-    public function scriviToken($pre = '', $method = self::get) {
-        $imp = BaseController::impersonato;
-        switch ($method) {
-            case self::get:
-                if (isset($this->impToken)) {
-                    // nel caso della 
-                    return $pre . "$imp=$this->impToken";
-                }
-                break;
-
-            case self::post:
-                if (isset($this->impToken)) {
-                    return "<input type=\"hidden\" name=\"$imp\" value=\"$this->impToken\"/>";
-                }
-                break;
-        }
-
-        return '';
-    }
-
 }
-
 ?>

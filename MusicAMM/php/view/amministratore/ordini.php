@@ -7,19 +7,19 @@
 <div class="input-form">
     <h3>Filtro</h3>
     <form method="get" action="amministratore/ordini">
-        <label for="cd">CD</label>
+        <label for="cd">Cd</label>
         <select name="cd" id="cd">
             <option value="">Qualsiasi</option>
-            <?php foreach ($CDs as $CD) { ?>
-                <option value="<?= $CD->getId() ?>" ><?= $CD->getModello()->getNome() . " " . $CD->getTarga() ?></option>
+            <?php foreach ($cds as $cd) { ?>
+                <option value="<?= $cd->getId() ?>" ><?= $cd->getCaratterizzazione()?></option>
             <?php } ?>
         </select>
         <br/>
-        <label for="utente">utente</label>
-        <select name="utente" id="utente">
+        <label for="cliente">Cliente</label>
+        <select name="cliente" id="cliente">
             <option value="">Qualsiasi</option>
-            <?php foreach ($clienti as $utente) { ?>
-                <option value="<?= $utente->getId() ?>" ><? echo $utente->getNome() . " " . $utente->getCognome()?></option>
+            <?php foreach ($clienti as $cliente) { ?>
+                <option value="<?= $cliente->getId() ?>" ><? echo $cliente->getNome() . " " . $cliente->getCognome()?></option>
             <?php } ?>
         </select>
         <br/>
@@ -27,16 +27,14 @@
     </form>
 </div>
 
+<h3>Elenco Ordini</h3>
 
-
-<h3>Elenco Catalogo</h3>
-
-<p id="nessuno">Nessun CD trovato</p>
+<p id="nessuno">Nessun ordine trovato</p>
 
 <table id="tabella_ordini">
     <thead>
         <tr>
-            <th>Utente</th>
+            <th>Cliente</th>
             <th>Album</th>
             <th>Costo</th>
         </tr>

@@ -3,7 +3,7 @@
 /**
  * Struttura dati per popolare la vista generica master.php
  *
- * @author amm
+ * @author Andrea Atzeni
  */
 class ViewDescriptor {
 
@@ -40,12 +40,6 @@ class ViewDescriptor {
      * @var string 
      */
     private $leftBar_file;
-
-    /**
-     * File che include la definizione HTML della sidebar destra
-     * @var string 
-     */
-    private $rightBar_file;
 
     /**
      * File che include la definizione HTML del contenuto principale
@@ -170,22 +164,6 @@ class ViewDescriptor {
      */
     public function setLeftBarFile($leftBar) {
         $this->leftBar_file = $leftBar;
-    }
-
-    /**
-     * Imposta il file che include la definizione HTML della sidebar destra
-     * @return string
-     */
-    public function getRightBarFile() {
-        return $this->rightBar_file;
-    }
-    
-    /**
-     * Imposta il path al file che include la definizione HTML della sidebar destra
-     * @param type $rightBar
-     */
-    public function setRightBarFile($rightBar) {
-        $this->rightBar_file = $rightBar;
     }
 
      /**

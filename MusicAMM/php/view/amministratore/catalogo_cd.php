@@ -1,4 +1,4 @@
-<h2>Parco auto</h2>
+<h2>Catalogo CD</h2>
 <table>
     <tr>
         <th>Artista</th>
@@ -8,23 +8,23 @@
         <th>Cancella</th>
     </tr>
     <?
-    foreach($CDs as $CD){
+    foreach($cds as $cd){
     ?>
     <tr>
-        <td><?= $CD->getArtista() ?></td>
-        <td><?= $CD->getTitolo() ?></td>
-        <td><?= $CD->getAnno() ?></td>
-        <td><?= $CD->getPrezzo() ?></td>
-        <td><a href="amministratore/auto?cmd=cancella_CD&CD=<?= $CD->getId()?>" title="Elimina il CD">
-            <img src="../images/cancella.png" alt="Elimina"></a>
+        <td><?= $cd->getArtista() ?></td>
+        <td><?= $cd->getTitolo() ?></td>
+        <td><?= $cd->getAnno() ?></td>
+        <td><?= $cd->getPrezzo() ?></td>
+        <td><a href="amministratore/cd?cmd=cancella_cd&cd=<?= $cd->getId()?>" title="Elimina il CD">
+            <img src="../images/delete.png" alt="Elimina"></a>
     </tr>
     <? } ?>
 </table>
 
 <div class="input-form">
 
-    <form method="post" action="amministratores/cd">as
-        <button type="submit" name="cmd" value="new_CD">Inserisci nuovo CD</button>
+    <form method="post" action="amministratore/cd">
+        <button type="submit" name="cmd" value="new_cd">Inserisci nuovo CD</button>
     </form>
 
 </div>

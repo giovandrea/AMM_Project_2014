@@ -1,8 +1,8 @@
 <div class="input-form">
     <h3>Nuovo acquisto</h3>
-    <form method="post" action="utente/prenota">
+    <form method="post" action="utente/acquista">
         <input type="hidden" name="cmd" value="nuovo_acquisto"/>
-        <input type="hidden" name="idCD" value="<?= $idCD ?>" />
+        <input type="hidden" name="idcd" value="<?= $idcd ?>" />
 	<label for="artista">Artista</label>
         <input type="artista" name="artista" id="artista"/>
 	<label for="titolo">Titolo</label>

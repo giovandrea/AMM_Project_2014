@@ -2,7 +2,7 @@
 
 $json = array();
 $json['errori'] = $errori;
-$json['noleggi'] = array();
+$json['ordini'] = array();
 foreach ($ordini as $ordine) {
 
     $element = array();
@@ -10,7 +10,7 @@ foreach ($ordini as $ordine) {
     $element['album'] = $ordine->getAlbum();
     $element['costo'] = $ordine->getCosto();
 
-    $json['noleggi'][] = $element;
+    $json['ordini'][] = $element;
 }
 
 echo json_encode($json);

@@ -1,7 +1,7 @@
 <div class="input-form">
     <h3>Inserisci nuovo CD</h3>
-    <form method="post" action="amministratore/crea_CD">
-        <input type="hidden" name="cmd" value="nuovo_CD"/>
+    <form method="post" action="amministratore/crea_cd">
+        <input type="hidden" name="cmd" value="nuovo_cd"/>
         <label for="artista">Artista</label>
 	<input type="artista" name="artista" id="artista"/>        
         <br/>
