@@ -30,7 +30,7 @@ if (!$vd->isJson()) {
                     <div id="top">
                         <?php
                         $logo = $vd->getLogoFile();
-                        require "$logo";
+                        require "$logo_file";
                         ?>
                     </div>
                 </header>
