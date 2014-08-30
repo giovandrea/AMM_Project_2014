@@ -21,7 +21,7 @@ header {
     background-image: url('../images/logo.png');
     background-repeat: no-repeat;
     background-position: center;
-    max-height: 90px;
+    height: 150px;
     padding-left: 120px;
 }
 

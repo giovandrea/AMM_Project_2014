@@ -17,16 +17,11 @@ header {
     padding-bottom: 30px;
 }
 
-footer {
-    background-color: #996666;
-    color: white;
-}
-
 #header{
     background-image: url('../images/logo.png');
     background-repeat: no-repeat;
     background-position: center;
-    max-height: 90px;
+    height: 130px;
     padding-left: 120px;
 }
 
@@ -63,7 +58,7 @@ footer {
 
 #footer{
     text-align: center;
-    background-color: #ffffff;
+    background-color: #996666;
     padding: 10px;
     padding-bottom: 10px;
     color: white;
