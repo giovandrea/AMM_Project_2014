@@ -96,6 +96,12 @@ class AmministratoreController extends BaseController {
                         $vd->setSottoPagina('catalogo_cd');
                         break;
 
+ 		     default:
+		         $vd->setSottoPagina('home');
+                         break;
+                              }
+                      }
+
             // gestione dei comandi inviati dall'utente
             if (isset($request["cmd"])) {
 
@@ -203,9 +209,6 @@ class AmministratoreController extends BaseController {
         // richiamo la vista
         require basename(__DIR__) . '/../view/master.php';
     	}
-
-        }
-    }
 
 }
 
