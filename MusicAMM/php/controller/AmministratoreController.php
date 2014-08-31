@@ -203,8 +203,6 @@ class AmministratoreController extends BaseController {
         // richiamo la vista
         require basename(__DIR__) . '/../view/master.php';
     	}
-     }
-   }
 }
 
 ?>
