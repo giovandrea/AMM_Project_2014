@@ -51,25 +51,25 @@
     <li>Amministratore 1
         <ul>
             <li>username: andrea</li>
-            <li>password: andrea</li>
+            <li>passoword: andrea</li>
         </ul>
     </li>
     <li>Amministratore 2
         <ul>
             <li>username: stefano</li>
-            <li>password: stefano</li>
+            <li>passoword: stefano</li>
         </ul>
     </li>
     <li>Cliente 1
         <ul>
             <li>username: tobias</li>
-            <li>password: tobias</li>
+            <li>passoword: tobias</li>
         </ul>
     </li>
     <li>Cliente 2
         <ul>
             <li>username: thomas</li>
-            <li>password: thomas</li>
+            <li>passoword: thomas</li>
         </ul>
     </li>
 </ul>

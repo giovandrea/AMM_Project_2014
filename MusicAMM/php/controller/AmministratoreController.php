@@ -210,7 +210,7 @@ class AmministratoreController extends BaseController {
      * @param array $request la richiesta da gestire 
      * @param array $msg array dove inserire eventuali messaggi d'errore
      */
-    protected function updateAppello($mod_appello, &$request, &$msg) {
+    public function updateAppello($mod_appello, &$request, &$msg) {
         if (isset($request['insegnamento'])) {
             $insegnamento = InsegnamentoFactory::instance()->creaInsegnamentoDaCodice($request['insegnamento']);
             if (isset($insegnamento)) {
@@ -241,7 +241,7 @@ class AmministratoreController extends BaseController {
      * @return Appello l'appello con l'id specificato se presente nella lista,
      * null altrimenti
      */
-    protected function cercaAppelloPerId($id, &$appelli) {
+    public function cercaAppelloPerId($id, &$appelli) {
         foreach ($appelli as $appello) {
             if ($appello->getId() == $id) {
                 return $appello;
@@ -256,7 +256,7 @@ class AmministratoreController extends BaseController {
      * @param array $appelli una lista di appelli
      * @return int il prossimo id degli appelli
      */
-    protected function prossimoIdAppelli(&$appelli) {
+    public function prossimoIdAppelli(&$appelli) {
         $max = -1;
         foreach ($appelli as $a) {
             if ($a->getId() > $max) {
@@ -271,7 +271,7 @@ class AmministratoreController extends BaseController {
      * @param array $elenco un elenco di esami
      * @return int il prossimo identificatore
      */
-    protected function prossimoIndiceElencoListe(&$elenco) {
+    public function prossimoIndiceElencoListe(&$elenco) {
         if (!isset($elenco)) {
             return 0;
         }
@@ -289,7 +289,7 @@ class AmministratoreController extends BaseController {
      * @param array $msg un array per inserire eventuali messaggi d'errore
      * @return l'identificatore dell'elenco selezionato
      */
-    protected function getIdElenco(&$request, &$msg) {
+    public function getIdElenco(&$request, &$msg) {
         if (!isset($request['elenco'])) {
             $msg[] = "<li> Non &egrave; stato selezionato un elenco</li>";
         } else {
@@ -311,7 +311,7 @@ class AmministratoreController extends BaseController {
      * @param array $msg un array dove inserire eventuali messaggi d'errore
      * @return Appello l'appello selezionato, null se non e' stato trovato
      */
-    protected function getAppello(&$request, &$msg) {
+    public function getAppello(&$request, &$msg) {
         if (isset($request['appello'])) {
             $appello_id = filter_var($request['appello'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
             $appello = AppelloFactory::instance()->cercaAppelloPerId($appello_id);
