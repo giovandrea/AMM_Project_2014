@@ -52,19 +52,19 @@ class AmministratoreController extends BaseController {
                         break;
 
                     // visulizzazione elenco ordini
-                    case 'acquisti':
-                        $acquisti = CDFactory::instance()->getCD();
+                    case 'ordini':
+                        $ordini = CDFactory::instance()->getCD();
  			$clienti = UserFactory::instance()->getListaClienti();
-                        $vd->setSottoPagina('acquisti');
+                        $vd->setSottoPagina('ordini');
 
                         $vd->addScript("../js/jquery-2.1.1.min.js");
                         $vd->addScript("../js/elencoAcquisti.js");
                         break;
 
-                    // gestione della richiesta ajax di filtro acquisti
-                    case 'filtra_acquisti':
+                    // gestione della richiesta ajax di filtro ordini
+                    case 'filtra_ordini':
                         $vd->toggleJson();
-                        $vd->setSottoPagina('acquisti_json');
+                        $vd->setSottoPagina('ordini_json');
                         $errori = array();
 
                         if (isset($request['cd']) && ($request['cd'] != '')) {
@@ -85,14 +85,14 @@ class AmministratoreController extends BaseController {
                             $cliente_id = null;
                         }
 
-                        $acquisti = AcquistiFactory::instance()->ricercaAcquisti(
+                        $ordini = AcquistoFactory::instance()->ricercaAcquisti(
                                 $user, $cd_id, $cliente_id);
 
                         break;
 
                     //visualizzazione del catalogo
                     case 'catalogo':
-                        $veicoli = CDFactory::instance()->getCD();                        
+                        $ordini = CDFactory::instance()->getCD();                        
                         $vd->setSottoPagina('catalogo_cd');
                         break;
 
@@ -135,7 +135,7 @@ class AmministratoreController extends BaseController {
                         $this->showHomeUtente($vd);
                         break;
 
-                    // l'utente non vuole modificare l'ordine selezionato
+                    // l'utente vuole annullare l'ordine selezionato
                     case 'cd_annulla':
                         $vd->setSottoPagina('catalogo_cd');
                         $this->showHomeUtente($vd);
@@ -164,7 +164,7 @@ class AmministratoreController extends BaseController {
                         
                         $this->creaFeedbackUtente($msg, $vd, "Nuovo cd inserito");
                         
-                        $veicoli = CD::instance()->getCD();
+                        $ordini = CD::instance()->getCD();
                         $this->showHomeUtente($vd);
                         break;
 
@@ -181,7 +181,7 @@ class AmministratoreController extends BaseController {
                                 $this->creaFeedbackUtente($msg, $vd, "cd eliminato");
                             }
                         }
-                        $veicoli = CDFactory::instance()->getCD();
+                        $ordini = CDFactory::instance()->getCD();
                         $this->showHomeUtente($vd);
                         break;
                
