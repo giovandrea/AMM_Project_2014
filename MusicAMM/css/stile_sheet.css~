@@ -7,7 +7,7 @@ body {
     background-color: #ffffff;
     font: 14px/21px "Courier New",Arial,sans-serif;
     width: 850px;
-    margin: 0px auto;
+    //margin: 0px auto;
 }
 
 header {
@@ -21,7 +21,7 @@ header {
     background-image: url('../images/logo.png');
     background-repeat: no-repeat;
     background-position: center;
-    height: 130px;
+    height: 150px;
     padding-left: 120px;
 }
 

@@ -7,22 +7,23 @@ body {
     background-color: #ffffff;
     font: 14px/21px "Courier New",Arial,sans-serif;
     width: 850px;
-    margin: 0px auto;
+    //margin: 0px auto;
 }
 
 header {
     background-color: #996666;
     color: white;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #header{
     background-image: url('../images/logo.png');
+    background-size: 128px 128px;
     background-repeat: no-repeat;
     background-position: center;
-    height: 150px;
-    padding-left: 120px;
+    height: 160px;
+    padding-left: 900px;
 }
 
 
