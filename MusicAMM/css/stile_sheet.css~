@@ -13,16 +13,17 @@ body {
 header {
     background-color: #996666;
     color: white;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #header{
     background-image: url('../images/logo.png');
+    background-size: 128px 128px;
     background-repeat: no-repeat;
     background-position: center;
-    height: 150px;
-    padding-left: 120px;
+    height: 160px;
+    padding-left: 900px;
 }
 
 
