@@ -15,8 +15,6 @@ header {
     color: white;
     padding-top: 20px;
     padding-bottom: 20px;
-    /border-top-left-radius: 20px;
-    /border-top-right-radius: 20px;
 }
 
 #header{
@@ -26,7 +24,6 @@ header {
     background-position: center;
     height: 95px;
     padding-left: 10px;
-    /vertical-align: middle;
     line-height: 150px;
 }
 
@@ -58,8 +55,6 @@ header {
     margin-right: 25px;
     padding: 10px;
     padding-left: 50px;
-    /min-height: 500px;
-    /border-left: 8px solid #1c345a;
 }
 
 #footer{
@@ -68,15 +63,11 @@ header {
     padding: 10px;
     padding-bottom: 10px;
     color: white;
-    /border-bottom-left-radius: 20px;
-    /border-bottom-right-radius: 20px;
-
 }
 
 #footer a:link, #footer a:visited{
     color: white;
     text-decoration: none;
-
 }
 
 a:hover{
@@ -122,9 +113,9 @@ a:hover{
 
 .input-form input[type="submit"], .input-form button {
     width: 35px;
-    float: left;
-    /margin-left: 35px;
-    /margin-right: 50px;
+    /float: left;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
 }
 
@@ -190,7 +181,6 @@ input[type=submit], button{
     background-color: #996666;
     height: 2.5em;
     font-weight: bold;
-    /border-radius: 1em;
     border: 1px solid #000000;
     min-width: 100px;
     margin-bottom: 10px;
@@ -200,7 +190,6 @@ input[type=submit], button{
 
 input[type=submit]:hover, button:hover{
     background-color: #669966;
-    /cursor: pointer;
 }
 
 .btn-group button {
