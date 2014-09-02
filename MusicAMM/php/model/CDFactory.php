@@ -1,12 +1,12 @@
 <?php
 
 include_once 'Db.php';
-include_once 'Cd.php';
+include_once 'CD.php';
 include_once 'CaratterizzazioneFactory.php';
 include_once 'AcquistoFactory.php';
 
 
-class CdFactory {
+class CDFactory {
 
     private static $singleton;
 
@@ -20,7 +20,7 @@ class CdFactory {
      */
     public static function instance() {
         if (!isset(self::$singleton)) {
-            self::$singleton = new CdFactory();
+            self::$singleton = new CDFactory();
         }
 
         return self::$singleton;

@@ -1,20 +1,20 @@
 <?php
 
 /**
- * Classe che rappresenta un generico CD
+ * Classe che rappresenta un generico cd
  *
  * @author Andrea Atzeni
  */
-class Cd {
+class CD {
 
     /**
-     * Id univoco del CD
+     * Id univoco del cd
      * @var int
      */
     private $id;
 
     /**
-     * Caratterizzazione del CD
+     * Caratterizzazione del cd
      * @var Caratterizzazione
      */
     private $caratterizzazione;
