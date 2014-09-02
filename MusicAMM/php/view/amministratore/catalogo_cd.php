@@ -2,7 +2,7 @@
 <table>
     <tr>
         <th>Artista</th>
-        <th>Titolo Album</th>
+        <th>Caratterizzazione</th>
         <th>Anno Pubblicazione</th>
         <th>Prezzo</th>
         <th>Cancella</th>
@@ -11,10 +11,10 @@
     foreach($cds as $cd){
     ?>
     <tr>
-        <td><?= $cd->getArtista() ?></td>
-        <td><?= $cd->getTitolo() ?></td>
+        <td><?= $cd->getCaratterizzazione()->getArtista()->getNome() ?></td>
+        <td><?= $cd->getCaratterizzazione()->getNome() ?></td>
         <td><?= $cd->getAnno() ?></td>
-        <td><?= $cd->getPrezzo() ?></td>
+        <td><?= $cd->getCaratterizzazione()->getPrezzo() ?> €</td>
         <td><a href="amministratore/cd?cmd=cancella_cd&cd=<?= $cd->getId()?>" title="Elimina il CD">
             <img src="../images/delete.png" alt="Elimina"></a>
     </tr>
