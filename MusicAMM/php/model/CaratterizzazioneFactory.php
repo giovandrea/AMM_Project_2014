@@ -14,7 +14,7 @@ class CaratterizzazioneFactory {
     }
 
     /**
-     * Restiuisce un singleton per creare CD
+     * Restituisce un singleton per creare CD
      * @return CaratterizzazioneFactory
      */
     public static function instance() {
@@ -26,20 +26,19 @@ class CaratterizzazioneFactory {
     }
 
     /**
-     * Restituisce il caratterizzazione che ha l'artistaentificatore passato
-     * @param int $artista
-     * @return \Caratterizzazione
+     * Restituisce la caratterizzazione che ha l'identificatore passato
+     * @param int $id
+     * @return Caratterizzazione
      */
-    public function &getCaratterizzazionePerId($artista) {
+    public function &getCaratterizzazionePerId($id) {
         $caratterizzazione = new Caratterizzazione();
-        $query = "select * from caratterizzazioni where artista = ?";
+        $query = "select * from caratterizzazioni where id = ?";
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
             error_log("[getCaratterizzazionePerId] impossibile inizializzare il database");
             $mysqli->close();
             return $caratterizzazione;
         }
-
 
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
@@ -50,7 +49,7 @@ class CaratterizzazioneFactory {
             return $caratterizzazione;
         }
 
-        if (!$stmt->bind_param('i', $artista)) {
+        if (!$stmt->bind_param('i', $id)) {
             error_log("[getCaratterizzazionePerId] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
@@ -62,23 +61,22 @@ class CaratterizzazioneFactory {
                     " eseguire lo statement");
             return $caratterizzazione;
         }
-
-        $artista = "";
+	
+	$id = 0;
+	$idartista = 0;
         $titolo = "";
-        $anno = 0;
         $prezzo = 0;
 
-        if (!$stmt->bind_result($artista, $titolocaratterizzazione, $artistacostruttore, $cilindrata, $potenza, $prezzo)) {
+        if (!$stmt->bind_result($id, $titolo, $idartista, $prezzo)) {
             error_log("[getCaratterizzazionePerId] impossibile" .
                     " effettuare il binding in output");
             return $caratterizzazione;
         }
         while ($stmt->fetch()) {
-            $caratterizzazione->setArtista($artista);
-            $caratterizzazione->setTitolo($titolo);
-            $caratterizzazione->NuovoCD(NuovoCDFactory::instance()->getCDPerId($artista));
-            $caratterizzazione->setAnno($anno);
+	    $caratterizzazione->setId($id);
+	    $caratterizzazione->setTitolo($titolo);
             $caratterizzazione->setPrezzo($prezzo);
+            $caratterizzazione->setArtista(ArtistaFactory::instance()->getArtistaPerId($idartista));
         }
 
         $mysqli->close();
@@ -87,7 +85,7 @@ class CaratterizzazioneFactory {
 
     /**
      * Restituisce la lista di tutte le caratterizzazioni
-     * @return array|\Caratterizzazione
+     * @return array di caratterizzazioni
      */
     public function &getCaratterizzazioni() {
 
@@ -117,18 +115,16 @@ class CaratterizzazioneFactory {
     /**
      * Crea un oggetto di tipo Caratterizzazione a partire da una riga del DB
      * @param type $row
-     * @return \Caratterizzazione
+     * @return Caratterizzazione
      */
     private function getCaratterizzazione($row) {
         $caratterizzazione = new Caratterizzazione();
-        $caratterizzazione->setArtista($row['artista']);
-        $caratterizzazione->setTitolo($row['titolocaratterizzazione']);
-        $caratterizzazione->setNuovoCD(NuovoCDFactory::instance()->getCDPerId($row['artista']));
-        $caratterizzazione->setAnno($row['anno']);
+        $caratterizzazione->setId($row['id']);
+        $caratterizzazione->setTitolo($row['titolo']);
+        $caratterizzazione->setArtista(ArtistaCDFactory::instance()->getArtistaPerId($row['idartista']));
         $caratterizzazione->setPrezzo($row['prezzo']);
         return $caratterizzazione;
     }
-
 }
 
 ?>

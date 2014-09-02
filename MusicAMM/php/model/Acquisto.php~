@@ -7,28 +7,28 @@
 
 class Acquisto{
     
-    private $artista;
+    private $id;
     
-    private $titolo;
+    private $cd;
 
     private $cliente;   
  
     private $costo;
    
-    public function getArtista() {
-        return $this->artista;
+    public function getId() {
+        return $this->id;
     }
 
-    public function setArtista($artista) {
-        $this->artista = $artista;
+    public function setId($id) {
+        $this->id = $id;
     }
 
-    public function getTitolo() {
-        return $this->titolo;
+    public function getCd() {
+        return $cd->cd;
     }
 
-    public function setTitolo($titolo) {
-        $this->titolo = $titolo;
+    public function setCd($cd) {
+        $this->cd = $cd;
     }
 
     public function getCliente() {

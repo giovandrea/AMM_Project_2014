@@ -2,9 +2,9 @@
 
 include_once 'Acquisto.php';
 include_once 'UserFactory.php';
-include_once 'CDFactory.php';
+include_once 'CdFactory.php';
 
-$numero=10;
+static $numero=10; /* prova per numero MAX di CD */
 
 class AcquistoFactory {
 
@@ -16,7 +16,7 @@ class AcquistoFactory {
 
     /**
      * Restituisce un singleton per creare Acquisti
-     * @return ModelloFactory
+     * @return AcquistoFactory
      */
     public static function instance() {
         if (!isset(self::$singleton)) {
@@ -27,12 +27,11 @@ class AcquistoFactory {
     }
 
     /**
-     * Controlla che il cd passato sia acquistabile
-     * @param string $artista del CD
-     * @param string $titolo del CD
-     * @return \Boolean true se il cd è acquistabile
+     * Controlla che il cd passato come parametro sia acquistabile
+     * @param int $id del CD
+     * @return Boolean true se il cd è acquistabile, false altrimenti
      */
-    public function isCdAcquistabile($artista, $titolo) {
+    public function isCdAcquistabile($id) {
         $acquistabile = true;
 
         $query = "SELECT * FROM acquisti WHERE `idcd` = ?";
@@ -53,7 +52,7 @@ class AcquistoFactory {
             return $acquistabile;
         }
 
-        if (!$stmt->bind_param('i', $artista)) {
+        if (!$stmt->bind_param('i', $id)) {
             error_log("[isCdAcquistabile] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
@@ -66,12 +65,12 @@ class AcquistoFactory {
             return $acquistabile;
         }
 
-        $artista = "";
-        $idCd = 0;
+	$id = 0;
+        $idcd = 0;
         $idcliente = 0;
         $costo = 0;
 
-        if (!$stmt->bind_result($artista, $idCd, $idcliente, $costo)) {
+        if (!$stmt->bind_result($id, $idcd, $idcliente, $costo)) {
             error_log("[isCdAcquistabile] impossibile" .
                     " effettuare il binding in output");
             return false;
@@ -94,13 +93,14 @@ class AcquistoFactory {
      * @param User $user
      * @param int $cd_id
      * @param int $cliente_id
-     * @return array|\cd
+     * @return array di cd
      */
     public function &ricercaAcquisti($user, $cd_id, $cliente_id) {
         $acquisti = array();
 
-        // costruisco la where "a pezzi" a seconda di quante 
-        // variabili sono definite
+        /* La where viene costruita a seconda di quante 
+         * variabili sono definite
+	 */
         $bind = "";
         $where = " where acquisti.id >= 0 ";
         $par = array();
@@ -123,7 +123,6 @@ class AcquistoFactory {
                 JOIN clienti ON idcliente = clienti.id
                 JOIN veicoli ON idcd = cd.id
                   " . $where;
-
 
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
@@ -176,7 +175,7 @@ class AcquistoFactory {
 
         $row = array();
         $bind = $stmt->bind_result(
-                $row['acquisti_id'], $row['acquisti_idcd'], $row['acquisti_idcliente'], $row['acquisti_costo'], $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'], $row['clienti_email'], $row['clienti_via'], $row['clienti_numero_civico'], $row['clienti_citta'], $row['clienti_username'], $row['clienti_password'], $row['cd_artista'], $row['cd_titolo'], $row['cd_anno'], $row['cd_anno']);
+                $row['acquisti_id'], $row['acquisti_idcd'], $row['acquisti_idcliente'], $row['acquisti_costo'], $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'], $row['clienti_email'], $row['clienti_via'], $row['clienti_numero_civico'], $row['clienti_citta'], $row['clienti_username'], $row['clienti_password'], $row['cd_id'], $row['cd_idcaratterizzazione'], $row['cd_anno']);
 
         if (!$bind) {
             error_log("[caricaAcquistiDaStmt] impossibile" .
@@ -195,17 +194,17 @@ class AcquistoFactory {
 
     public function creaDaArray($row) {
         $Acquisto = new Acquisto();
-        $Acquisto->setArtista($row['acquisti_artista']);
+        $Acquisto->setId($row['acquisti_id']);
         $Acquisto->setCliente(UserFactory::instance()->creaClienteDaArray($row));
-        $Acquisto->setTitolo($row['acquisti_titolo']);
+        $Acquisto->setCd(CDFactory::instance()->creaCdDaArray($row));
         $Acquisto->setCosto($row['acquisti_costo']);
         return $Acquisto;
     }
 
     /**
-     * Salva l'acquisto passato nel database, con transazione
+     * Salva l'acquisto passato come parametro nel database, con transazione
      * @param Acquisto $Acquisto
-     * @return true se il salvataggio è andato a buon fine
+     * @return true se il salvataggio è andato a buon fine, false altrimenti
      */
     public function nuovo($Acquisto) {
         $query = "insert into acquisti (idcd, idcliente, costo)
@@ -227,7 +226,7 @@ class AcquistoFactory {
             return 0;
         }
 
-        if (!$stmt->bind_param('iissd', $Acquisto->getCD()->getArtista(), $Acquisto->getCliente()->getId(), $Acquisto->getCosto())) {
+        if (!$stmt->bind_param('iid', $Acquisto->getCD()->getId(), $Acquisto->getCliente()->getId(), $Acquisto->getCosto())) {
             error_log("[nuovo] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
@@ -256,9 +255,9 @@ class AcquistoFactory {
     /**
      * Restituisce un array contenente gli acquisti fatti dal cliente passato come parametro
      * @param Cliente $user
-     * @return array|\Acquisti
+     * @return array di Acquisti
      */
-    public function &acquistiCliente($user) {
+    public function &acquistiPerCliente($user) {
         $acquisti = array();
 
         $query = "SELECT * 
@@ -266,7 +265,6 @@ class AcquistoFactory {
                 JOIN clienti ON idcliente = clienti.id
                 JOIN cd ON idcd = cd.id
                 WHERE acquisti.idcliente = ?";
-
 
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
@@ -284,7 +282,6 @@ class AcquistoFactory {
             return $acquisti;
         }
 
-
         if (!$stmt->bind_param("i", $user->getId())) {
             error_log("[acquistiPerCliente] impossibile" .
                     " effettuare il binding in input");
@@ -292,13 +289,11 @@ class AcquistoFactory {
             return $acquisti;
         }
 
-
         $acquisti = self::caricaAcquistiDaStmt($stmt);
 
         $mysqli->close();
         return $acquisti;
     }
-
 }
 
 ?>
