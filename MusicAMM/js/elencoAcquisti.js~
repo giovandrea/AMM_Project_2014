@@ -28,20 +28,20 @@ $(document).ready(function () {
                         $("#nessuno").show();
                        
                         // nascondo la tabella
-                        $("#tabella_ordini").hide();
+                        $("#tabella_acquisti").hide();
 
                     }else{
                         // nascondo il messaggio per nessun elemento
                         $("#nessuno").hide();
-                        $("#tabella_ordini").show();
+                        $("#tabella_acquisti").show();
                         //cancello tutti gli elementi dalla tabella
-                        $("#tabella_ordini tbody").empty();
+                        $("#tabella_acquisti tbody").empty();
                        
                         // aggingo le righe
                         var i = 0;
-                        for(var key in data['ordini']){
-                            var esame = data['ordini'][key];
-                            $("#tabella_ordini tbody").append(
+                        for(var key in data['acquisti']){
+                            var esame = data['acquisti'][key];
+                            $("#tabella_acquisti tbody").append(
                                 "<tr id=\"row_" + i + "\" >\n\
                                        <td>a</td>\n\
                                        <td>a</td>\n\
@@ -52,8 +52,8 @@ $(document).ready(function () {
                             }
                             
                             var colonne = $("#row_"+ i +" td");
-                            $(colonne[0]).text(esame['utente']);
-                            $(colonne[1]).text(esame['CD']);
+                            $(colonne[0]).text(esame['cliente']);
+                            $(colonne[1]).text(esame['cd']);
                             $(colonne[5]).text(esame['costo'] + " €");
 
                             i++;            

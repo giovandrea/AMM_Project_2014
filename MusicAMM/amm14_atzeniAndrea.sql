@@ -121,7 +121,7 @@ INSERT INTO `caratterizzazioni` (`id`, `idartista`, `titolo`, `prezzo`) VALUES
 -- Struttura della tabella `cd`
 --
 
-CREATE TABLE IF NOT EXISTS `cd` (
+CREATE TABLE IF NOT EXISTS `cds` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idcaratterizzazione` int(11) DEFAULT NULL,
   `anno` int(11) NOT NULL,
@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `clienti` (
 --
 
 INSERT INTO `clienti` (`id`, `nome`, `cognome`, `email`, `numerotel`, `via`, `numero_civico`, `citta`, `username`, `password`) VALUES
-(1, 'Tobias', 'Sammet', 'utenteimmaginario@emai.it', '0781/122121', 'Via Roux', 48, 'Carbonia', 'tobias', 'tobias'),
+(1, 'Tobias', 'Sammet', 'utenteimmaginario@email.it', '0781/122121', 'Via Roux', 48, 'Carbonia', 'tobias', 'tobias'),
 (2, 'Thomàs', 'Diaz', 'utentespagnolo@email.es', '00349312345566', 'Via Spagnola', 66, 'Siviglia', 'thomas', 'thomas');
 
 --

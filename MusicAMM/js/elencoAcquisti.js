@@ -52,8 +52,8 @@ $(document).ready(function () {
                             }
                             
                             var colonne = $("#row_"+ i +" td");
-                            $(colonne[0]).text(esame['utente']);
-                            $(colonne[1]).text(esame['CD']);
+                            $(colonne[0]).text(esame['cliente']);
+                            $(colonne[1]).text(esame['cd']);
                             $(colonne[5]).text(esame['costo'] + " €");
 
                             i++;            
