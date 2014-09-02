@@ -1,29 +1,29 @@
 <?php
 
 /**
- * Classe che descrive le proprietà di un generico CD
+ * Classe che descrive le proprietà di un generico cd
  */
 
 class Caratterizzazione {
     /**
-     * Id univoco della caratterizzazione del CD
+     * Id univoco della caratterizzazione del cd
      * @var int
      */
     private $id;
     /**
-     * artista dell'artista del CD
+     * artista dell'artista del cd
      * @var String
      */
     private $artista;
 
     /**
-     * artista del CD
+     * artista del cd
      * @var String
      */
     private $titolo;
     
     /**
-     * Prezzo del CD
+     * Prezzo del cd
      * @var double
      */
     private $prezzo;

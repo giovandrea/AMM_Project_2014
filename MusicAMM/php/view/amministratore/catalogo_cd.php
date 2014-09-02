@@ -12,7 +12,7 @@
     ?>
     <tr>
         <td><?= $cd->getCaratterizzazione()->getArtista()->getNome() ?></td>
-        <td><?= $cd->getCaratterizzazione()->getNome() ?></td>
+        <td><?= $cd->getCaratterizzazione()->getTitolo() ?></td>
         <td><?= $cd->getAnno() ?></td>
         <td><?= $cd->getCaratterizzazione()->getPrezzo() ?> " €"</td>
         <td><a href="amministratore/catalogo?cmd=cancella_cd&cd=<?= $cd->getId()?>" title="Elimina il cd">

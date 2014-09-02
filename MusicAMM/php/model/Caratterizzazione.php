@@ -11,13 +11,13 @@ class Caratterizzazione {
      */
     private $id;
     /**
-     * artista dell'artista del cd
+     * artista del cd
      * @var String
      */
     private $artista;
 
     /**
-     * artista del cd
+     * titolo del cd
      * @var String
      */
     private $titolo;
