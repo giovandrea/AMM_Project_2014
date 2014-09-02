@@ -5,7 +5,6 @@ include_once 'CD.php';
 include_once 'CaratterizzazioneFactory.php';
 include_once 'AcquistoFactory.php';
 
-
 class CDFactory {
 
     private static $singleton;
@@ -37,7 +36,7 @@ class CDFactory {
             return array();
         }
 
-        $query = "SELECT * from cd";
+        $query = "SELECT * from cds";
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
         if (!$stmt) {
@@ -58,12 +57,12 @@ class CDFactory {
      * @return array di cd
      */
     private function &inizializzaListaCd(mysqli_stmt $stmt) {
-        $cd = array();
+        $cds = array();
 
         if (!$stmt->execute()) {
             error_log("[inizializzaListaCd] impossibile" .
                     " eseguire lo statement");
-            return $cd;
+            return $cds;
         }
 
         $id = 0;
