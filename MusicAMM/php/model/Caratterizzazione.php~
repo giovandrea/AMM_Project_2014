@@ -28,7 +28,7 @@ class Caratterizzazione {
      */
     private $prezzo;
 
-/**
+    /**
      * Restituisce un identificatore unico per il cd
      * @return int
      */

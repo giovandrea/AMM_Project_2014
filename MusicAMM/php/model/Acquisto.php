@@ -2,7 +2,6 @@
 
 /**
  * Classe per l'acquisto di un CD
- *
  */
 
 class Acquisto{

@@ -2,7 +2,7 @@
 
 include_once 'Acquisto.php';
 include_once 'UserFactory.php';
-include_once 'CdFactory.php';
+include_once 'CDFactory.php';
 
 static $numero=10; /* prova per numero MAX di CD */
 

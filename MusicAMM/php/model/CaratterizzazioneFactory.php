@@ -14,7 +14,7 @@ class CaratterizzazioneFactory {
     }
 
     /**
-     * Restituisce un singleton per creare CD
+     * Restituisce un singleton per creare Caratterizzazioni
      * @return CaratterizzazioneFactory
      */
     public static function instance() {

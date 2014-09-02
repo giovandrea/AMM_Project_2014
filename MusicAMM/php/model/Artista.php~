@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe che descrive un nuovo cd
+ * Classe che descrive un nuovo CD
  */
 class Artista {
     
