@@ -15,7 +15,7 @@
         <td><?= $cd->getCaratterizzazione()->getNome() ?></td>
         <td><?= $cd->getAnno() ?></td>
         <td><?= $cd->getCaratterizzazione()->getPrezzo() ?> " €"</td>
-        <td><a href="amministratore/cd?cmd=cancella_cd&cd=<?= $cd->getId()?>" title="Elimina il cd">
+        <td><a href="amministratore/catalogo?cmd=cancella_cd&cd=<?= $cd->getId()?>" title="Elimina il cd">
             <img src="../images/delete.png" alt="Elimina"></a>
     </tr>
     <? } ?>

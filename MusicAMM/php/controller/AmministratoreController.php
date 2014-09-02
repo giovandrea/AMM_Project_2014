@@ -53,7 +53,7 @@ class AmministratoreController extends BaseController {
 
                     // visulizzazione elenco ordini
                     case 'ordini':
-                        $ordini = CDFactory::instance()->getCd();
+                        $cds = CDFactory::instance()->getCd();
  			$clienti = UserFactory::instance()->getListaClienti();
                         $vd->setSottoPagina('ordini');
 
@@ -92,7 +92,7 @@ class AmministratoreController extends BaseController {
 
                     //visualizzazione del catalogo
                     case 'catalogo':
-                        $ordini = CDFactory::instance()->getCd();                        
+                        $cds = CDFactory::instance()->getCd();                        
                         $vd->setSottoPagina('catalogo_cd');
                         break;
 
@@ -147,6 +147,12 @@ class AmministratoreController extends BaseController {
                         $this->showHomeUtente($vd);
                         break;
 
+		    case 'new_cd':
+			$caratterizzazioni = CaratterizzazioneFactory::instance()->getCaratterizzazioni();
+			$vd->setSottoPagina('crea_cd');
+			$this->showHomeUtente($vd);
+			break;
+
                     // creazione di un nuovo cd
                     case 'cd_nuovo':
                         $vd->setSottoPagina('catalogo_cd');
@@ -163,14 +169,14 @@ class AmministratoreController extends BaseController {
 
                         if (count($msg) == 0) {
                             $vd->setSottoPagina('catalogo_cd');
-                            if (CatalogoFactory::instance()->nuovo($nuovo) != 1) {
+                            if (CDFactory::instance()->nuovo($nuovo) != 1) {
                                 $msg[] = '<li> Impossibile aggiungere il cd</li>';
                             }
                         }
                         
                         $this->creaFeedbackUtente($msg, $vd, "Nuovo cd inserito");
                         
-                        $ordini = CD::instance()->getCd();
+                        $ordini = CDFactory::instance()->getCd();
                         $this->showHomeUtente($vd);
                         break;
 
@@ -187,7 +193,7 @@ class AmministratoreController extends BaseController {
                                 $this->creaFeedbackUtente($msg, $vd, "cd eliminato");
                             }
                         }
-                        $ordini = CDFactory::instance()->getCd();
+                        $cds = CDFactory::instance()->getCd();
                         $this->showHomeUtente($vd);
                         break;
                
