@@ -34,7 +34,7 @@
 <table id="tabella_ordini">
     <thead>
         <tr>
-            <th>Utente</th>
+            <th>Cliente</th>
             <th>Album</th>
             <th>Costo</th>
         </tr>

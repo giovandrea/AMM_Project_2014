@@ -35,7 +35,7 @@
     <thead>
         <tr>
             <th>Cliente</th>
-            <th>Album</th>
+            <th>Cd</th>
             <th>Costo</th>
         </tr>
     </thead>

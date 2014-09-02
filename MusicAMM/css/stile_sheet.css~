@@ -89,14 +89,14 @@ a:hover{
 }
 
 #htmlval{
-    background-image: url('images/html.gif');
+    background-image: url('../images/html.gif');
     background-repeat: no-repeat;
     background-position: left;
     padding: 60px;
 }
 
 #cssval{
-    background-image: url('images/css.gif');
+    background-image: url('../images/css.gif');
     background-repeat: no-repeat;
     background-position: left;
     padding: 50px;
