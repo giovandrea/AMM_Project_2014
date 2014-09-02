@@ -5,7 +5,7 @@
  *
  * @author Andrea Atzeni
  */
-class CD {
+class Cd {
 
     /**
      * Id univoco del CD

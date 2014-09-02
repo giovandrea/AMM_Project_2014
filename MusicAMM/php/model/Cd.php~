@@ -26,8 +26,7 @@ class CD {
     private $anno;
 
     /**
-     * Flag che memorizza se la macchina è acquistabile
-     * (non attualmente prenotata)
+     * Flag che memorizza se il cd è acquistabile
      * @var boolean
      */
     private $acquistabile;
