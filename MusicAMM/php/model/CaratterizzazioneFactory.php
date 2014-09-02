@@ -121,7 +121,7 @@ class CaratterizzazioneFactory {
         $caratterizzazione = new Caratterizzazione();
         $caratterizzazione->setId($row['id']);
         $caratterizzazione->setTitolo($row['titolo']);
-        $caratterizzazione->setArtista(ArtistaCDFactory::instance()->getArtistaPerId($row['idartista']));
+        $caratterizzazione->setArtista(CDFactory::instance()->getArtistaPerId($row['idartista']));
         $caratterizzazione->setPrezzo($row['prezzo']);
         return $caratterizzazione;
     }

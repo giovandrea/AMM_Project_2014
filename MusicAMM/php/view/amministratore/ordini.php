@@ -11,7 +11,7 @@
         <select name="cd" id="cd">
             <option value="">Qualsiasi</option>
             <?php foreach ($cds as $cd) { ?>
-                <option value="<?= $cd->getId() ?>" ><?= $cd->getCaratterizzazione()?></option>
+                <option value="<?= $cd->getId() ?>" ><?= $cd->getCaratterizzazione()->getTitolo . " " ?></option>
             <?php } ?>
         </select>
         <br/>
