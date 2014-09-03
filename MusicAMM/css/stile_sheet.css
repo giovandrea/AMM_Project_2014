@@ -1,70 +1,68 @@
-/**
-  * File CCS per l'abbellimento del sito (3a volta.)
-  * @author Andrea Atzeni
-  **/
-
 body {
-    background-color: #ffffff;
-    font: 16px/19px "Courier New",Arial,sans-serif;
+    background-color: #cccccc;
+    font: 13px/20px "Open Sans",Arial,sans-serif;
     width: 1000px;
-    margin: 1px auto;
+    margin: 0px auto;
 }
 
 header {
-    background-color: #996666;
+    background-color: #1c345a;
     color: white;
     padding-top: 20px;
     padding-bottom: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 #header{
-    background-image: url('../images/logo.png');
-    background-size: 110px 110px;
+    background-image: url('../img/logo.jpg');
     background-repeat: no-repeat;
-    background-position: center;
-    height: 95px;
-    padding-left: 10px;
-    line-height: 150px;
+    background-position: center left;
+    height: 100px;
+    padding-left: 120px;
+    vertical-align: middle;
+    line-height: 100px;
 }
 
 #header h1{
     font-size: 3em;
-    margin: 1px;
+    margin: 0px;
 }
 
 #sidebar1{
-    background-color: #669966;
+    background-color: white;
     float: left;
-    width: 250px;
-    height: 450px;    
+    width: 250px;    
     font-size: 13px;
 }
 
 #sidebar1 ul{
     list-style-type: none;
-    padding-left: 10px;
 }
 
 #sidebar1 h2{
-    padding-left: 10px;
-    color: white;
+    padding-left: 40px;
 }
 
+
 #content {
-    margin-left: 225px;
-    margin-right: 25px;
+    margin-left: 250px;
+    margin-right: 50px;
     padding: 10px;
     padding-left: 50px;
     min-height: 500px;
-    border-left: 1px solid #000000;
+    border-left: 1px solid #1c345a;
 }
 
 #footer{
     text-align: center;
-    background-color: #996666;
+    background-color: #1c345a;
     padding: 10px;
     padding-bottom: 10px;
     color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
 }
 
 #footer a:link, #footer a:visited{
@@ -77,10 +75,11 @@ a:hover{
 }
 
 #page {
-    border: 2px solid #000000;
-    border-top: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-    box-shadow: 0px 0px 10px;
+    border: 2px solid #1c345a;
+    border-top: 1px solid #1c345a;
+    border-bottom: 1px solid #1c345a;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px;
     background-color: white;
 }
 
@@ -91,17 +90,17 @@ a:hover{
 }
 
 #htmlval{
-    background-image: url('../images/html.gif');
+    background-image: url('../img/html.gif');
     background-repeat: no-repeat;
-    background-position: left;
-    padding: 60px;
+    background-position: center left;
+    padding: 20px;
 }
 
 #cssval{
-    background-image: url('../images/css.gif');
+    background-image: url('../img/css.gif');
     background-repeat: no-repeat;
-    background-position: left;
-    padding: 50px;
+    background-position: center left;
+    padding: 20px;
 }
 
 #top p {
@@ -114,14 +113,14 @@ a:hover{
 }
 
 .input-form input[type="submit"], .input-form button {
-    width: 35px;
+    width: auto;
     margin-left: auto;
     margin-right: auto;
     display: block;
 }
 
 label {
-    width: 20%;
+    width: 30%;
     display: inline-block;
 }
 
@@ -131,11 +130,11 @@ label {
 }
 
 .input-form {
-    line-height: 2.5em;
+    line-height: 3em;
 }
 
 h2, h3{
-    color: #000000;
+    color: #1c345a;
 }
 
 .logout a, .logout a:visited {
@@ -143,11 +142,11 @@ h2, h3{
 }
 
 a, a:visited {
-    color: #9e165a;
+    color: #9e1616;
 }
 
 table {
-    border: 1px solid #000000;
+    border: 1px solid #1c345a;
     border-collapse: collapse;
     margin-top:10px;
     line-height: 1.2em;
@@ -158,13 +157,13 @@ table {
 
 
 th, td {
-    border: 1px solid #000000;
+    border: 1px solid #1c345a;
     border-collapse: collapse;
     text-align: center;
 }
 
 th{
-    background-color: #996666;
+    background-color: #1c345a;
     color: white;
     font-weight: bold;
 }
@@ -179,10 +178,11 @@ tr.alt-row, tr.alt-row td{
 
 input[type=submit], button{
     color: #ffffff;
-    background-color: #996666;
-    height: 2.5em;
+    background-color: #1c345a;
+    height: 2em;
     font-weight: bold;
-    border: 1px solid #996666;
+    border-radius: 1em;
+    border: 1px solid #1c345a;
     min-width: 100px;
     margin-bottom: 10px;
     margin-top: 5px;
@@ -190,7 +190,8 @@ input[type=submit], button{
 }
 
 input[type=submit]:hover, button:hover{
-    background-color: #669966;
+    background-color: #3969b8;
+    cursor: pointer;
 }
 
 .btn-group button {
