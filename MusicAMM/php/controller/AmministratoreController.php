@@ -169,7 +169,7 @@ class AmministratoreController extends BaseController {
 			}
 
 			if ($request['titolo'] != "") {
-				$nuovo->setCaratterizzazione(setTitolo($request['titolo']));
+				$nuovo->setTitolo($request['titolo']);
 			} else {
 				$msg[] = '<li> Inserire un titolo valido </li>';
 			}
