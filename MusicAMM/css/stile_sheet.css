@@ -146,7 +146,7 @@ a, a:visited {
 }
 
 ttable {
-    border: 1px solid #1c345a;
+    border: 1px solid #000000;
     border-collapse: collapse;
     margin-top:10px;
     line-height: 1.2em;
@@ -157,13 +157,13 @@ ttable {
 
 
 th, td {
-    border: 1px solid #1c345a;
+    border: 1px solid #000000;
     border-collapse: collapse;
     text-align: center;
 }
 
 th{
-    background-color: #1c345a;
+    background-color: #996666;
     color: white;
     font-weight: bold;
 }
