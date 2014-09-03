@@ -120,7 +120,7 @@ class CaratterizzazioneFactory {
     private function getCaratterizzazione($row) {
         $caratterizzazione = new Caratterizzazione();
         $caratterizzazione->setId($row['id']);
-        $caratterizzazione->setTitolo($row['titolo']);
+        $caratterizzazione->setTitolo($row['nomecaratterizzazione']);
         $caratterizzazione->setArtista(ArtistaFactory::instance()->getArtistaPerId($row['idartista']));
         $caratterizzazione->setPrezzo($row['prezzo']);
         return $caratterizzazione;

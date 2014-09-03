@@ -96,8 +96,8 @@ INSERT INTO `artisti` (`id`, `nomeartista`) VALUES
 
 CREATE TABLE IF NOT EXISTS `caratterizzazioni` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idartista` int(11) DEFAULT NULL,
   `titolo` varchar(60) DEFAULT NULL,
+  `idartista` int(11) DEFAULT NULL,  
   `prezzo` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `artisti_fk` (`idartista`)
@@ -107,13 +107,13 @@ CREATE TABLE IF NOT EXISTS `caratterizzazioni` (
 -- Dump dei dati per la tabella `caratterizzazioni`
 --
 
-INSERT INTO `caratterizzazioni` (`id`, `idartista`, `titolo`, `prezzo`) VALUES
-(1, 1, 'The Scarecrow', 18),
-(2, 6, 'Triumph and Power', 17),
-(3, 4, 'The Pagan Manifesto', 19),
-(4, 2, 'Space Police - Defenders Of The Crown', 22),
-(5, 3, 'Ritual', 19),
-(6, 5, 'Rock Opera: Episode II - In Search Of The Little Prince', 22);
+INSERT INTO `caratterizzazioni` (`id`, `titolo`, `idartista`, `prezzo`) VALUES
+(1, 'The Scarecrow', 1, 18),
+(2, 'Triumph and Power', 6, 17),
+(3, 'The Pagan Manifesto', 4, 19),
+(4, 'Space Police - Defenders Of The Crown', 2,  22),
+(5, 'Ritual', 3, 19),
+(6, 'Rock Opera: Episode II - In Search Of The Little Prince', 5, 22);
 
 -- --------------------------------------------------------
 
@@ -177,7 +177,7 @@ INSERT INTO `clienti` (`id`, `nome`, `cognome`, `email`, `numerotel`, `via`, `nu
 -- Limiti per la tabella `acquisti`
 --
 ALTER TABLE `acquisti`
-  ADD CONSTRAINT `cd_fk` FOREIGN KEY (`idcd`) REFERENCES `cd` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cd_fk` FOREIGN KEY (`idcd`) REFERENCES `cds` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cliente_fk` FOREIGN KEY (`idcliente`) REFERENCES `clienti` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
