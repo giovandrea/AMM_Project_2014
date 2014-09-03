@@ -4,7 +4,7 @@ include_once 'BaseController.php';
 include_once basename(__DIR__) . '/../model/CD.php';
 include_once basename(__DIR__) . '/../model/CDFactory.php';
 include_once basename(__DIR__) . '/../model/UserFactory.php';
-include_once basename(__DIR__) . '/../model/CaratterizzazioneFactory.php';
+include_once basename(__DIR__) . '/../model/Caratterizzazione.php';
 
 /**
  * Controller che gestisce la modifica dei dati dell'applicazione relativa agli
@@ -159,8 +159,9 @@ class AmministratoreController extends BaseController {
                         $vd->setSottoPagina('catalogo_cd');
                         $msg = array();
                         $nuovo = new Cd();
+			$prova = new Caratterizzazione();
                         $nuovo->setId(-1);
-                        //$nuovo->setCaratterizzazione(CaratterizzazioneFactory::instance()->getCaratterizzazionePerId($request['caratterizzazione']));
+			$prova->setId(-1);
 
  			if ($request['anno'] != "") {
 				$nuovo->setAnno($request['anno']);
@@ -169,19 +170,19 @@ class AmministratoreController extends BaseController {
 			}
 
 			if ($request['titolo'] != "") {
-				$nuovo->setTitolo($request['titolo']);
+				$prova->setTitolo($request['titolo']);
 			} else {
 				$msg[] = '<li> Inserire un titolo valido </li>';
 			}
 
 			if ($request['artista'] != "") {
-				$nuovo->setArtista($request['artista']);
+				$prova->setArtista($request['artista']);
 			} else {
 				$msg[] = '<li> Inserire un artista valido </li>';
 			}
 
 			if ($request['prezzo'] != "") {
-				$nuovo->setPrezzo($request['prezzo']);
+				$prova->setPrezzo($request['prezzo']);
 			} else {
 				$msg[] = '<li> Inserire un prezzo valido </li>';
 			}
