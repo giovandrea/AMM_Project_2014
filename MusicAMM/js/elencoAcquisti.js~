@@ -12,7 +12,7 @@ $(document).ready(function () {
 
         var par = {
             cd : _cd,
-            cliente : _cliente,
+            cliente : _cliente
         };
      
         $.ajax({
@@ -54,7 +54,7 @@ $(document).ready(function () {
                             var colonne = $("#row_"+ i +" td");
                             $(colonne[0]).text(esame['cliente']);
                             $(colonne[1]).text(esame['cd']);
-                            $(colonne[5]).text(esame['costo'] + " €");
+                            $(colonne[2]).text(esame['costo'] + " €");
 
                             i++;            
                         }

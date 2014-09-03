@@ -118,7 +118,7 @@ INSERT INTO `caratterizzazioni` (`id`, `idartista`, `titolo`, `prezzo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `cd`
+-- Struttura della tabella `cds`
 --
 
 CREATE TABLE IF NOT EXISTS `cds` (
@@ -127,13 +127,13 @@ CREATE TABLE IF NOT EXISTS `cds` (
   `anno` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `caratterizzazione_fk` (`idcaratterizzazione`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dump dei dati per la tabella `cd`
+-- Dump dei dati per la tabella `cds`
 --
 
-INSERT INTO `cd` (`id`, `idcaratterizzazione`, `anno`) VALUES
+INSERT INTO `cds` (`id`, `idcaratterizzazione`, `anno`) VALUES
 (1, 2, 2014),
 (2, 1, 2014),
 (3, 4, 2014),
@@ -166,8 +166,8 @@ CREATE TABLE IF NOT EXISTS `clienti` (
 --
 
 INSERT INTO `clienti` (`id`, `nome`, `cognome`, `email`, `numerotel`, `via`, `numero_civico`, `citta`, `username`, `password`) VALUES
-(1, 'Tobias', 'Sammet', 'utenteimmaginario@emai.it', '0781/122121', 'Via Roux', 48, 'Carbonia', 'tobias', 'tobias'),
-(2, 'Thomàs', 'Diaz', 'utentespagnolo@email.es', '00349312345566', 'Via Spagnola', 66, 'Siviglia', 'thomas', 'thomas');
+(1, 'Tobias', 'Sammet', 'utenteimmaginario@email.it', '0781/122121', 'Via Roux', 48, 'Carbonia', 'tobias', 'tobias'),
+(2, 'Thomas', 'Diaz', 'utentespagnolo@email.es', '00349312345566', 'Via Spagnola', 66, 'Siviglia', 'thomas', 'thomas');
 
 --
 -- Limiti per le tabelle scaricate
@@ -187,9 +187,9 @@ ALTER TABLE `caratterizzazioni`
   ADD CONSTRAINT `artisti_fk` FOREIGN KEY (`idartista`) REFERENCES `artisti` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
--- Limiti per la tabella `cd`
+-- Limiti per la tabella `cds`
 --
-ALTER TABLE `cd`
+ALTER TABLE `cds`
   ADD CONSTRAINT `caratterizzazione_fk` FOREIGN KEY (`idcaratterizzazione`) REFERENCES `caratterizzazioni` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
