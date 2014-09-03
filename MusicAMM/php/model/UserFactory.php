@@ -18,7 +18,7 @@ class UserFactory {
 
     /**
      * Restiuisce un singleton per creare utenti
-     * @return \UserFactory
+     * @return UserFactory
      */
     public static function instance() {
         if (!isset(self::$singleton)) {
@@ -32,9 +32,10 @@ class UserFactory {
      * Carica un utente tramite username e password
      * @param string $username
      * @param string $password
-     * @return \User|\Amministratore|\Cliente
+     * @return User: Amministratore o Cliente
      */
     public function caricaUtente($username, $password) {
+
 
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
@@ -68,7 +69,7 @@ class UserFactory {
             return $cliente;
         }
 
-        // ora cerco un Amministratore
+        // ora cerco un amministratore
         $query = "select * from amministratori where username = ? and password = ?";
 
         $stmt = $mysqli->stmt_init();
@@ -87,10 +88,10 @@ class UserFactory {
             return null;
         }
 
-        $Amministratore = self::caricaAmministratoreDaStmt($stmt);
-        if (isset($Amministratore)) {
+        $amministratore = self::caricaAmministratoreDaStmt($stmt);
+        if (isset($amministratore)) {
             $mysqli->close();
-            return $Amministratore;
+            return $amministratore;
         }
     }
 
@@ -108,8 +109,9 @@ class UserFactory {
             via as clienti_via,
             email as clienti_email,
             numero_civico as clienti_numero_civico,
-            username as clienti_username,w
+            username as clienti_username,
             password as clienti_password,
+            numerotel as clienti_numerotel 
             FROM `clienti` ";
 
         $mysqli = Db::getInstance()->connectDb();
@@ -197,7 +199,7 @@ class UserFactory {
     /**
      * Crea un cliente da una riga del db
      * @param type $row
-     * @return \cliente
+     * @return Cliente
      */
     public function creaClienteDaArray($row) {
         $cliente = new Cliente();
@@ -211,29 +213,31 @@ class UserFactory {
         $cliente->setRuolo(User::Cliente);
         $cliente->setUsername($row['clienti_username']);
         $cliente->setPassword($row['clienti_password']);
-  
+        $cliente->setNumeroTel($row['clienti_numerotel']);
+
         return $cliente;
     }
 
     /**
-     * Crea un Amministratore da una riga del db
+     * Crea un amministratore da una riga del db
      * @param type $row
      * @return \Amministratore
      */
     public function creaAmministratoreDaArray($row) {
-        $Amministratore = new Amministratore();
-        $Amministratore->setId($row['amministratori_id']);
-        $Amministratore->setNome($row['amministratori_nome']);
-        $Amministratore->setCognome($row['amministratori_cognome']);
-        $Amministratore->setEmail($row['amministratori_email']);
-        $Amministratore->setCitta($row['amministratori_citta']);
-        $Amministratore->setVia($row['amministratori_via']);
-        $Amministratore->setNumeroCivico($row['amministratori_numero_civico']);
-        $Amministratore->setRuolo(User::Amministratore);
-        $Amministratore->setUsername($row['amministratori_username']);
-        $Amministratore->setPassword($row['amministratori_password']);
- 
-        return $Amministratore;
+        $amministratore = new Amministratore();
+        $amministratore->setId($row['amministratori_id']);
+        $amministratore->setNome($row['amministratori_nome']);
+        $amministratore->setCognome($row['amministratori_cognome']);
+        $amministratore->setEmail($row['amministratori_email']);
+        $amministratore->setCitta($row['amministratori_citta']);
+        $amministratore->setVia($row['amministratori_via']);
+        $amministratore->setNumeroCivico($row['amministratori_numero_civico']);
+        $amministratore->setRuolo(User::Amministratore);
+        $amministratore->setUsername($row['amministratori_username']);
+        $amministratore->setPassword($row['amministratori_password']);
+        $amministratore->setNumeroTel($row['amministratori_numerotel']);
+
+        return $amministratore;
     }
 
     /**
@@ -279,6 +283,7 @@ class UserFactory {
                     numero_civico = ?,
                     citta = ?,
                     via = ?,
+                    numerotel = ?
                     where clienti.id = ?
                     ";
         $stmt->prepare($query);
@@ -288,7 +293,7 @@ class UserFactory {
             return 0;
         }
 
-        if (!$stmt->bind_param('ssssissi', $c->getPassword(), $c->getNome(), $c->getCognome(), $c->getEmail(), $c->getNumeroCivico(), $c->getCitta(), $c->getVia(), $c->getId())) {
+        if (!$stmt->bind_param('ssssisssi', $c->getPassword(), $c->getNome(), $c->getCognome(), $c->getEmail(), $c->getNumeroCivico(), $c->getCitta(), $c->getVia(), $c->getNumeroTel(), $c->getId())) {
             error_log("[salvaCliente] impossibile" .
                     " effettuare il binding in input");
             return 0;
@@ -304,8 +309,8 @@ class UserFactory {
     }
 
     /**
-     * Rende persistenti le modifiche all'anagrafica di un Amministratore sul db
-     * @param Amministratoree $d il Amministratore considerato
+     * Rende persistenti le modifiche all'anagrafica di un amministratore sul db
+     * @param Amministratoree $d il amministratore considerato
      * @param mysqli_stmt $stmt un prepared statement
      * @return int il numero di righe modificate
      */
@@ -318,6 +323,7 @@ class UserFactory {
                     numero_civico = ?,
                     citta = ?,
                     via = ?,
+                    numerotel = ?
                     where amministratori.id = ?
                     ";
         $stmt->prepare($query);
@@ -327,7 +333,7 @@ class UserFactory {
             return 0;
         }
 
-        if (!$stmt->bind_param('ssssisssi', $d->getPassword(), $d->getNome(), $d->getCognome(), $d->getEmail(), $d->getNumeroCivico(), $d->getCitta(), $d->getVia(), $d->getId())) {
+        if (!$stmt->bind_param('ssssisssi', $d->getPassword(), $d->getNome(), $d->getCognome(), $d->getEmail(), $d->getNumeroCivico(), $d->getCitta(), $d->getVia(), $d->getNumeroTel(), $d->getId())) {
             error_log("[salvaAmministratore] impossibile" .
                     " effettuare il binding in input");
             return 0;
@@ -343,7 +349,7 @@ class UserFactory {
     }
 
     /**
-     * Carica un amministratore eseguendo un prepared statement
+     * Carica un dipentente eseguendo un prepared statement
      * @param mysqli_stmt $stmt
      * @return null
      */
@@ -356,7 +362,7 @@ class UserFactory {
         }
         $row = array();
         $bind = $stmt->bind_result(
-                $row['amministratori_id'], $row['amministratori_nome'], $row['amministratori_cognome'], $row['amministratori_email'], $row['amministratori_via'], $row['amministratori_numero_civico'], $row['amministratori_citta'], $row['amministratori_username'], $row['amministratori_password']);
+                $row['amministratori_id'], $row['amministratori_nome'], $row['amministratori_cognome'], $row['amministratori_email'], $row['amministratori_numerotel'], $row['amministratori_via'], $row['amministratori_numero_civico'], $row['amministratori_citta'], $row['amministratori_username'], $row['amministratori_password']);
         if (!$bind) {
             error_log("[caricaAmministratoreDaStmt] impossibile" .
                     " effettuare il binding in output");
@@ -387,7 +393,7 @@ class UserFactory {
 
         $row = array();
         $bind = $stmt->bind_result(
-                $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'], $row['clienti_email'], $row['clienti_via'], $row['clienti_numero_civico'], $row['clienti_citta'], $row['clienti_username'], $row['clienti_password']);
+                $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'], $row['clienti_email'], $row['clienti_numerotel'], $row['clienti_via'], $row['clienti_numero_civico'], $row['clienti_citta'], $row['clienti_username'], $row['clienti_password']);
         if (!$bind) {
             error_log("[caricaClienteDaStmt] impossibile" .
                     " effettuare il binding in output");
