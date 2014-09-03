@@ -19,7 +19,7 @@ header {
 
 #header{
     background-image: url('../images/logo.png');
-    background-size: 128px 128px;
+    background-size: 110px 110px;
     background-repeat: no-repeat;
     background-position: center;
     height: 95px;

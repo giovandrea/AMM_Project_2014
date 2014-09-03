@@ -110,7 +110,6 @@ class UserFactory {
             numero_civico as clienti_numero_civico,
             username as clienti_username,w
             password as clienti_password,
-            numerotel as clienti_numerotel 
             FROM `clienti` ";
 
         $mysqli = Db::getInstance()->connectDb();
@@ -280,7 +279,6 @@ class UserFactory {
                     numero_civico = ?,
                     citta = ?,
                     via = ?,
-                    numerotel = ?
                     where clienti.id = ?
                     ";
         $stmt->prepare($query);
@@ -290,7 +288,7 @@ class UserFactory {
             return 0;
         }
 
-        if (!$stmt->bind_param('ssssisssi', $c->getPassword(), $c->getNome(), $c->getCognome(), $c->getEmail(), $c->getNumeroCivico(), $c->getCitta(), $c->getVia(), $c->getNumeroTel(), $c->getId())) {
+        if (!$stmt->bind_param('ssssissi', $c->getPassword(), $c->getNome(), $c->getCognome(), $c->getEmail(), $c->getNumeroCivico(), $c->getCitta(), $c->getVia(), $c->getId())) {
             error_log("[salvaCliente] impossibile" .
                     " effettuare il binding in input");
             return 0;
@@ -320,7 +318,6 @@ class UserFactory {
                     numero_civico = ?,
                     citta = ?,
                     via = ?,
-                    numerotel = ?
                     where amministratori.id = ?
                     ";
         $stmt->prepare($query);
@@ -330,7 +327,7 @@ class UserFactory {
             return 0;
         }
 
-        if (!$stmt->bind_param('ssssisssi', $d->getPassword(), $d->getNome(), $d->getCognome(), $d->getEmail(), $d->getNumeroCivico(), $d->getCitta(), $d->getVia(), $d->getNumeroTel(), $d->getId())) {
+        if (!$stmt->bind_param('ssssisssi', $d->getPassword(), $d->getNome(), $d->getCognome(), $d->getEmail(), $d->getNumeroCivico(), $d->getCitta(), $d->getVia(), $d->getId())) {
             error_log("[salvaAmministratore] impossibile" .
                     " effettuare il binding in input");
             return 0;
@@ -359,7 +356,7 @@ class UserFactory {
         }
         $row = array();
         $bind = $stmt->bind_result(
-                $row['amministratori_id'], $row['amministratori_nome'], $row['amministratori_cognome'], $row['amministratori_email'], $row['amministratori_numerotel'], $row['amministratori_via'], $row['amministratori_numero_civico'], $row['amministratori_citta'], $row['amministratori_username'], $row['amministratori_password']);
+                $row['amministratori_id'], $row['amministratori_nome'], $row['amministratori_cognome'], $row['amministratori_email'], $row['amministratori_via'], $row['amministratori_numero_civico'], $row['amministratori_citta'], $row['amministratori_username'], $row['amministratori_password']);
         if (!$bind) {
             error_log("[caricaAmministratoreDaStmt] impossibile" .
                     " effettuare il binding in output");
@@ -390,7 +387,7 @@ class UserFactory {
 
         $row = array();
         $bind = $stmt->bind_result(
-                $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'], $row['clienti_email'], $row['clienti_numerotel'], $row['clienti_via'], $row['clienti_numero_civico'], $row['clienti_citta'], $row['clienti_username'], $row['clienti_password']);
+                $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'], $row['clienti_email'], $row['clienti_via'], $row['clienti_numero_civico'], $row['clienti_citta'], $row['clienti_username'], $row['clienti_password']);
         if (!$bind) {
             error_log("[caricaClienteDaStmt] impossibile" .
                     " effettuare il binding in output");

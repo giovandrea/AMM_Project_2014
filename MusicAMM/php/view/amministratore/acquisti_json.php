@@ -7,7 +7,7 @@ foreach ($acquisti as $acquisto) {
 
     $element = array();
     $element['cliente'] = $acquisto->getCliente()->getNome() . " " . $acquisto->getCliente()->getCognome();
-    $element['cd'] = $acquisto->getVeicolo()->getModello()->getCostruttore()->getNome() . " " . $noleggio->getVeicolo()->getModello()->getNome();
+    $element['cd'] = $acquisto->getCd()->getCaratterizzazione()->getArtista()->getNome() . " " . $acquisto->getCd()->getCaratterizzazione()->getTitolo();
     $element['costo'] = $acquisto->getCosto();
 
     $json['acquisti'][] = $element;

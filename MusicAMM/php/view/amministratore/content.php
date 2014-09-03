@@ -4,20 +4,20 @@ switch ($vd->getSottoPagina()) {
         include 'anagrafica.php';
         break;
 
-    case 'ordini':
-        include 'ordini.php';
+    case 'acquisti':
+        include 'acquisti.php';
         break;
 
-    case 'ordini_json':
-        include 'ordini_json.php';
+    case 'acquisti_json':
+        include 'acquisti_json.php';
         break;
 
     case 'catalogo_cd':
         include 'catalogo_cd.php';
         break;
     
-    case 'aggiungi_nuovo_cd':
-        include 'aggiungi_nuovo_cd.php';
+    case 'crea_cd':
+        include 'crea_cd.php';
         break;
         ?>
 
@@ -32,8 +32,8 @@ switch ($vd->getSottoPagina()) {
         </p>
         <ul>
             <li><a href="amministratore/anagrafica">Anagrafica</a></li>
-            <li><a href="amministratore/catalogo">Catalogo</a></li>
-            <li><a href="amministratore/ordini">Ordini</a></li>
+            <li><a href="amministratore/catalogo">Catalogo CD</a></li>
+            <li><a href="amministratore/acquisti">Acquisti</a></li>
         </ul>
         <?php
         break;

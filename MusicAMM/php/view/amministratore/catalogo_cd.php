@@ -2,7 +2,7 @@
 <table>
     <tr>
         <th>Artista</th>
-        <th>Caratterizzazione</th>
+        <th>Titolo</th>
         <th>Anno Pubblicazione</th>
         <th>Prezzo</th>
         <th>Cancella</th>
@@ -19,7 +19,7 @@
             <img src="../images/delete.png" alt="Elimina"></a>
     </tr>
     <? } ?>
-</table>
+</
 
 <div class="input-form">
 

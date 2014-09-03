@@ -1,4 +1,4 @@
-<h2>Ricerca cd</h2>
+<h2>Ricerca acquisti</h2>
 <div class="error">
     <div>
         <ul><li>Testo</li></ul>
@@ -6,10 +6,10 @@
 </div>
 <div class="input-form">
     <h3>Filtro</h3>
-    <form method="get" action="amministratore/ordini">
+    <form method="get" action="amministratore/acquisti">
         <label for="cd">Cd</label>
         <select name="cd" id="cd">
-            <option value="">Qualsiasi</option>
+            <option value="">Tutto</option>
             <?php foreach ($cds as $cd) { ?>
                 <option value="<?= $cd->getId() ?>" ><?= $cd->getCaratterizzazione()->getTitolo() . " " ?></option>
             <?php } ?>
@@ -17,7 +17,7 @@
         <br/>
         <label for="cliente">Cliente</label>
         <select name="cliente" id="cliente">
-            <option value="">Qualsiasi</option>
+            <option value="">Tutti</option>
             <?php foreach ($clienti as $cliente) { ?>
                 <option value="<?= $cliente->getId() ?>" ><? echo $cliente->getNome() . " " . $cliente->getCognome()?></option>
             <?php } ?>
@@ -27,11 +27,11 @@
     </form>
 </div>
 
-<h3>Elenco Ordini</h3>
+<h3>Elenco Acquisti</h3>
 
-<p id="nessuno">Nessun ordine trovato</p>
+<p id="nessuno">Nessun acquisto trovato</p>
 
-<table id="tabella_ordini">
+<table id="tabella_acquisti">
     <thead>
         <tr>
             <th>Cliente</th>

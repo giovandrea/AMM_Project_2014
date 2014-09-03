@@ -51,20 +51,20 @@ class AmministratoreController extends BaseController {
                         $vd->setSottoPagina('anagrafica');
                         break;
 
-                    // visulizzazione elenco ordini
-                    case 'ordini':
+                    // visulizzazione elenco acquisti
+                    case 'acquisti':
                         $cds = CDFactory::instance()->getCd();
  			$clienti = UserFactory::instance()->getListaClienti();
-                        $vd->setSottoPagina('ordini');
+                        $vd->setSottoPagina('acquisti');
 
                         $vd->addScript("../js/jquery-2.1.1.min.js");
                         $vd->addScript("../js/elencoAcquisti.js");
                         break;
 
-                    // gestione della richiesta ajax di filtro ordini
-                    case 'filtra_ordini':
+                    // gestione della richiesta ajax di filtro acquisti
+                    case 'filtra_acquisti':
                         $vd->toggleJson();
-                        $vd->setSottoPagina('ordini_json');
+                        $vd->setSottoPagina('acquisti_json');
                         $errori = array();
 
                         if (isset($request['cd']) && ($request['cd'] != '')) {
@@ -85,7 +85,7 @@ class AmministratoreController extends BaseController {
                             $cliente_id = null;
                         }
 
-                        $ordini = AcquistoFactory::instance()->ricercaAcquisti(
+                        $acquisti = AcquistoFactory::instance()->ricercaAcquisti(
                                 $user, $cd_id, $cliente_id);
 
                         break;
@@ -176,7 +176,7 @@ class AmministratoreController extends BaseController {
                         
                         $this->creaFeedbackUtente($msg, $vd, "Nuovo cd inserito");
                         
-                        $ordini = CDFactory::instance()->getCd();
+                        $cds= CDFactory::instance()->getCd();
                         $this->showHomeUtente($vd);
                         break;
 
