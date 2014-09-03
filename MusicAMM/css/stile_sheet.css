@@ -70,6 +70,10 @@ header {
     text-decoration: none;
 }
 
+#content a:link, #content a:visited {
+    color: #996666;
+}
+
 a:hover{
     font-weight: bold;
 }
@@ -113,7 +117,6 @@ a:hover{
 
 .input-form input[type="submit"], .input-form button {
     width: 35px;
-    /float: left;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -141,9 +144,8 @@ h2, h3{
     color: white;
 }
 
-/*#9e165a*/
-a, a:visited {
-    color: #ffffff;
+a:visited {
+    color: #9e165a;
 }
 
 ttable {
