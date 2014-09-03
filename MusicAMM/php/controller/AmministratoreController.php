@@ -4,6 +4,7 @@ include_once 'BaseController.php';
 include_once basename(__DIR__) . '/../model/CD.php';
 include_once basename(__DIR__) . '/../model/CDFactory.php';
 include_once basename(__DIR__) . '/../model/UserFactory.php';
+include_once basename(__DIR__) . '/../model/CaratterizzazioneFactory.php';
 
 /**
  * Controller che gestisce la modifica dei dati dell'applicazione relativa agli

@@ -159,7 +159,7 @@ class AmministratoreController extends BaseController {
                         $msg = array();
                         $nuovo = new Cd();
                         $nuovo->setId(-1);
-                        $nuovo->setCaratterizzazione(CaratterizzazioneFactory::instance()->getCaratterizzazionePerId($request['caratterizzazione']));
+                        //$nuovo->setCaratterizzazione(CaratterizzazioneFactory::instance()->getCaratterizzazionePerId($request['caratterizzazione']));
 
  			if ($request['anno'] != "") {
 				$nuovo->setAnno($request['anno']);
