@@ -15,7 +15,7 @@
         <input type="anno" name="anno" id="anno"/>
         <div class="btn-group">
             <button type="submit" name="cmd" value="cd_nuovo">Inserisci</button>
-            <button type="submit" name="cmd" value="cd_annulla">Annulla</button>
+            <button type="submit" name="cmd" value="a_annulla">Annulla</button>
         </div>
     </form>
 </div>
