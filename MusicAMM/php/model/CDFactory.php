@@ -15,7 +15,7 @@ class CDFactory {
 
     /**
      * Restituisce un singleton per creare Cd
-     * @return CdFactory
+     * @return CDFactory
      */
     public static function instance() {
         if (!isset(self::$singleton)) {
@@ -100,7 +100,7 @@ class CDFactory {
      * @return true se il salvataggio è andato a buon fine, false altrimenti
      */
     public function nuovo($cd) {
-        $query = "insert into Cd (idcaratterizzazione, anno)
+        $query = "insert into cds (idcaratterizzazione, anno)
                   values (?, ?)";
 
         $mysqli = Db::getInstance()->connectDb();
@@ -143,7 +143,7 @@ class CDFactory {
      * @return true se la cancellazione è andata a buon fine, false altrimenti
      */
     public function cancellaPerId($id) {
-        $query = "delete from cd where id = ?";
+        $query = "delete from cds where id = ?";
 
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {

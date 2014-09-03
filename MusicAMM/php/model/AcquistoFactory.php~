@@ -89,7 +89,7 @@ class AcquistoFactory {
     }
 
     /**
-     * Cerca un Acquisto corrispondente ai parameti passati
+     * Cerca un acquisto corrispondente ai parameti passati
      * @param User $user
      * @param int $cd_id
      * @param int $cliente_id
@@ -121,7 +121,7 @@ class AcquistoFactory {
         $query = "SELECT * 
                 FROM acquisti
                 JOIN clienti ON idcliente = clienti.id
-                JOIN veicoli ON idcd = cd.id
+                JOIN cds ON idcd = cd.id
                   " . $where;
 
         $mysqli = Db::getInstance()->connectDb();
@@ -193,20 +193,20 @@ class AcquistoFactory {
     }
 
     public function creaDaArray($row) {
-        $Acquisto = new Acquisto();
-        $Acquisto->setId($row['acquisti_id']);
-        $Acquisto->setCliente(UserFactory::instance()->creaClienteDaArray($row));
-        $Acquisto->setCd(CDFactory::instance()->creaCdDaArray($row));
-        $Acquisto->setCosto($row['acquisti_costo']);
-        return $Acquisto;
+        $acquisto = new Acquisto();
+        $acquisto->setId($row['acquisti_id']);
+        $acquisto->setCliente(UserFactory::instance()->creaClienteDaArray($row));
+        $acquisto->setCd(CDFactory::instance()->creaCdDaArray($row));
+        $acquisto->setCosto($row['acquisti_costo']);
+        return $acquisto;
     }
 
     /**
      * Salva l'acquisto passato come parametro nel database, con transazione
-     * @param Acquisto $Acquisto
+     * @param Acquisto $acquisto
      * @return true se il salvataggio è andato a buon fine, false altrimenti
      */
-    public function nuovo($Acquisto) {
+    public function nuovo($acquisto) {
         $query = "insert into acquisti (idcd, idcliente, costo)
                   values (?, ?, ?)";
 
@@ -226,7 +226,7 @@ class AcquistoFactory {
             return 0;
         }
 
-        if (!$stmt->bind_param('iid', $Acquisto->getCD()->getId(), $Acquisto->getCliente()->getId(), $Acquisto->getCosto())) {
+        if (!$stmt->bind_param('iid', $acquisto->getCD()->getId(), $acquisto->getCliente()->getId(), $acquisto->getCosto())) {
             error_log("[nuovo] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();

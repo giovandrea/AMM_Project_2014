@@ -186,11 +186,11 @@ class AmministratoreController extends BaseController {
                             $intVal = filter_var($request['cd'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if (isset($intVal)) {
 
-                                if (CDFactory::instance()->cancellaPerId($intVal) < 1) {
+                                if (CDFactory::instance()->cancellaPerId($intVal) != 1) {
                                     $msg[] = '<li> Impossibile cancellare il cd </li>';
                                 }
 
-                                $this->creaFeedbackUtente($msg, $vd, "cd eliminato");
+                                $this->creaFeedbackUtente($msg, $vd, "Cd eliminato");
                             }
                         }
                         $cds = CDFactory::instance()->getCd();

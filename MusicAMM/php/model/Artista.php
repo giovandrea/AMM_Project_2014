@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe che descrive un nuovo cd
+ * Classe che descrive l'artista di un cd
  */
 class Artista {
     
@@ -18,25 +18,15 @@ class Artista {
     }
     
     /**
-     * Restituisce un identificatore unico per il cd
+     * Restituisce un identificatore unico per l'artista
      * @return int
      */
     public function getId() {
         return $this->id;
     }
 
-    /**
-     * Imposta un identificatore unico per il cd
-     * @param int $id
-     * @return boolean true se il valore e' stato aggiornato correttamente,
-     * false altrimenti
-     */
     public function setId($id) {
-        $intVal = filter_var($id, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
-        if (!isset($intVal)) {
-            return false;
-        }
-        $this->id = $intVal;
+        $this->id = $id;
     }
 }
 

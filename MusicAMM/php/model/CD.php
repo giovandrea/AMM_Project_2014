@@ -53,11 +53,7 @@ class CD {
      * false altrimenti
      */
     public function setId($id) {
-        $intVal = filter_var($id, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
-        if (!isset($intVal)) {
-            return false;
-        }
-        $this->id = $intVal;
+        $this->id = $id;
     }
 
     public function setAnno($anno) {

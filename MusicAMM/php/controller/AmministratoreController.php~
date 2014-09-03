@@ -176,7 +176,7 @@ class AmministratoreController extends BaseController {
                         
                         $this->creaFeedbackUtente($msg, $vd, "Nuovo cd inserito");
                         
-                        $acquisti = CDFactory::instance()->getCd();
+                        $cds= CDFactory::instance()->getCd();
                         $this->showHomeUtente($vd);
                         break;
 
@@ -186,7 +186,7 @@ class AmministratoreController extends BaseController {
                             $intVal = filter_var($request['cd'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if (isset($intVal)) {
 
-                                if (CDFactory::instance()->cancellaPerId($intVal) < 1) {
+                                if (CDFactory::instance()->cancellaPerId($intVal) != 1) {
                                     $msg[] = '<li> Impossibile cancellare il cd </li>';
                                 }
 

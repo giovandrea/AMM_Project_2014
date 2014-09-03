@@ -2,7 +2,7 @@
     <h3>Inserisci nuovo cd</h3>
     <form method="post" action="dipendente/crea_cd">
         <input type="hidden" name="cmd" value="nuovo_cd"/>
-        <label for="caratterizzazione">Titolo</label>
+        <label for="caratterizzazione">Caratterizzazione</label>
         <select name="caratterizzazione" id="caratterizzazione">
             <?php foreach ($caratterizzazioni as $caratterizzazione) { ?>
                 <option value="<?= $caratterizzazione->getId() ?>" >

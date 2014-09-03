@@ -64,17 +64,17 @@ class CaratterizzazioneFactory {
 	
 	$id = 0;
 	$idartista = 0;
-        $titolo = "";
+        $nomecaratterizzazione = "";
         $prezzo = 0;
 
-        if (!$stmt->bind_result($id, $titolo, $idartista, $prezzo)) {
+        if (!$stmt->bind_result($id, $nomecaratterizzazione, $idartista, $prezzo)) {
             error_log("[getCaratterizzazionePerId] impossibile" .
                     " effettuare il binding in output");
             return $caratterizzazione;
         }
         while ($stmt->fetch()) {
 	    $caratterizzazione->setId($id);
-	    $caratterizzazione->setTitolo($titolo);
+	    $caratterizzazione->setTitolo($nomecaratterizzazione);
             $caratterizzazione->setPrezzo($prezzo);
             $caratterizzazione->setArtista(ArtistaFactory::instance()->getArtistaPerId($idartista));
         }
@@ -120,7 +120,7 @@ class CaratterizzazioneFactory {
     private function getCaratterizzazione($row) {
         $caratterizzazione = new Caratterizzazione();
         $caratterizzazione->setId($row['id']);
-        $caratterizzazione->setTitolo($row['titolo']);
+        $caratterizzazione->setTitolo($row['nomecaratterizzazione']);
         $caratterizzazione->setArtista(ArtistaFactory::instance()->getArtistaPerId($row['idartista']));
         $caratterizzazione->setPrezzo($row['prezzo']);
         return $caratterizzazione;
