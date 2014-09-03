@@ -19,7 +19,7 @@
             <img src="../images/delete.png" alt="Elimina"></a>
     </tr>
     <? } ?>
-</
+</table>
 
 <div class="input-form">
 
