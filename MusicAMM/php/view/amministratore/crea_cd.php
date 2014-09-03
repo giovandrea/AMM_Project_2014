@@ -1,6 +1,6 @@
 <div class="input-form">
     <h3>Inserisci nuovo cd</h3>
-    <form method="post" action="dipendente/crea_cd">
+    <form method="post" action="amministratore/crea_cd">
         <input type="hidden" name="cmd" value="nuovo_cd"/>
         <label for="caratterizzazione">Caratterizzazione</label>
         <select name="caratterizzazione" id="caratterizzazione">
