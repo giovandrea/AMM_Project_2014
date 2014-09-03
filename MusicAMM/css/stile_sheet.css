@@ -145,8 +145,8 @@ a, a:visited {
     color: #9e165a;
 }
 
-table {
-    border: 1px solid #996666;
+ttable {
+    border: 1px solid #1c345a;
     border-collapse: collapse;
     margin-top:10px;
     line-height: 1.2em;
@@ -157,13 +157,13 @@ table {
 
 
 th, td {
-    border: 1px solid #000000;
+    border: 1px solid #1c345a;
     border-collapse: collapse;
     text-align: center;
 }
 
 th{
-    background-color: #669966;
+    background-color: #1c345a;
     color: white;
     font-weight: bold;
 }
