@@ -159,12 +159,30 @@ class AmministratoreController extends BaseController {
                         $msg = array();
                         $nuovo = new Cd();
                         $nuovo->setId(-1);
-                        $nuovo->setCaratterizzazione(CaratterizzazioneFactory::instance()->getCaratterizzazionePerId($request['caratterizzazione']));
+                        //$nuovo->setCaratterizzazione(CaratterizzazioneFactory::instance()->getCaratterizzazionePerId($request['caratterizzazione']));
 
  			if ($request['anno'] != "") {
 				$nuovo->setAnno($request['anno']);
 			} else {
 				$msg[] = '<li> Inserire un anno valido </li>';
+			}
+
+			if ($request['titolo'] != "") {
+				$nuovo->setCaratterizzazione(setTitolo($request['titolo']));
+			} else {
+				$msg[] = '<li> Inserire un titolo valido </li>';
+			}
+
+			if ($request['artista'] != "") {
+				$nuovo->setArtista($request['artista']);
+			} else {
+				$msg[] = '<li> Inserire un artista valido </li>';
+			}
+
+			if ($request['prezzo'] != "") {
+				$nuovo->setPrezzo($request['prezzo']);
+			} else {
+				$msg[] = '<li> Inserire un prezzo valido </li>';
 			}
 
                         if (count($msg) == 0) {
