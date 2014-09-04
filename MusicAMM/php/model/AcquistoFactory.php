@@ -42,7 +42,6 @@ class AcquistoFactory {
             return $acquistabile;
         }
 
-
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
         if (!$stmt) {
@@ -89,7 +88,7 @@ class AcquistoFactory {
     }
 
     /**
-     * Cerca un acquisto corrispondente ai parameti passati
+     * Cerca un acquisto corrispondente ai parametri passati
      * @param User $user
      * @param int $cd_id
      * @param int $cliente_id
