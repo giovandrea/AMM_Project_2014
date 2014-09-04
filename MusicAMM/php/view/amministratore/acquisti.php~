@@ -23,13 +23,19 @@
             <?php } ?>
         </select>
         <br/>
+ 	<label for="datainizio">Data inizio</label>
+	<input name="datainizio" id="datainizio" type="text"/>
+	<br/>
+	<label for="datafine">Data fine</label>
+	<input name="datafine" id="datafine" type="text"/>
+	<br/>
         <button id="filtra" type="submit" name="cmd">Cerca</button>
     </form>
 </div>
 
 <h3>Elenco Acquisti</h3>
 
-<p id="nessuno">Nessun ordine trovato</p>
+<p id="nessuno">Nessun acquisto trovato</p>
 
 <table id="tabella_acquisti">
     <thead>

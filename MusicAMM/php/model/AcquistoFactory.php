@@ -4,8 +4,6 @@ include_once 'Acquisto.php';
 include_once 'UserFactory.php';
 include_once 'CDFactory.php';
 
-static $numero=10; /* prova per numero MAX di CD */
-
 class AcquistoFactory {
 
     private static $singleton;
@@ -27,12 +25,21 @@ class AcquistoFactory {
     }
 
     /**
-     * Controlla che il cd passato come parametro sia acquistabile
+     * Controlla che il cd passato come parametro sia selezionabile
      * @param int $id del CD
      * @return Boolean true se il cd è acquistabile, false altrimenti
      */
     public function isCdAcquistabile($id) {
         $acquistabile = true;
+
+
+	/*calcolo il timestamp della data passata rispetto
+	 * alla mezzanotte del giorno
+	 */
+	if ($data == "now") {
+	     $data = strtotime("now");
+	}
+	     $data = $data - $data % 86400;
 
         $query = "SELECT * FROM acquisti WHERE `idcd` = ?";
         $mysqli = Db::getInstance()->connectDb();
@@ -66,18 +73,26 @@ class AcquistoFactory {
 
 	$id = 0;
         $idcd = 0;
+	$datainizio = "";
+	$datafine = "";
         $idcliente = 0;
         $costo = 0;
 
-        if (!$stmt->bind_result($id, $idcd, $idcliente, $costo)) {
+        if (!$stmt->bind_result($id, $idcd, $idcliente, $datainizio, $datafine, $costo)) {
             error_log("[isCdAcquistabile] impossibile" .
                     " effettuare il binding in output");
             return false;
         }
         while ($stmt->fetch() && $acquistabile) {
 
-	    $numero--;	
-            if ($numero < 0) {
+	    /*qui vengono convertite le date (86400 secondi ogni giorno)
+	     */
+	    $datainizio = DateTime::createFromFormat("Y-m-d", "$datainizio")->getTimeStamp();
+	    $datainizio -= $datainizio % 86400;
+	    $datafine = DateTime::createFromFormat("Y-m-d", "$datafine")->getTimeStamp();
+	    $datafine -= $datafine % 86400;
+	
+            if ($data >= $datainizio && $data <= $datafine) {
                 $acquistabile = false;
             }
         }
@@ -92,9 +107,11 @@ class AcquistoFactory {
      * @param User $user
      * @param int $cd_id
      * @param int $cliente_id
+     * @param int $datainizio
+     * @param int $datafine
      * @return array di cd
      */
-    public function &ricercaAcquisti($user, $cd_id, $cliente_id) {
+    public function &ricercaAcquisti($user, $cd_id, $cliente_id, $datainizio, $datafine) {
         $acquisti = array();
 
         /* La where viene costruita a seconda di quante 
@@ -115,6 +132,22 @@ class AcquistoFactory {
             $where .= " and idcliente = ? ";
             $bind .="i";
             $par[] = $cliente_id;
+        }
+
+        if (isset($datainizio)) {
+            if ($datainizio != "") {
+                $where .= " and datainizio = ? ";
+                $bind .="s";
+                $par[] = $datainizio;
+            }
+        }
+
+        if (isset($datafine)) {
+            if ($datafine != "") {
+                $where .= " and datafine = ? ";
+                $bind .="s";
+                $par[] = $datafine;
+            }
         }
 
         $query = "SELECT * 
@@ -148,9 +181,28 @@ class AcquistoFactory {
                     return $acquisti;
                 }
                 break;
+
             case 2:
                 if (!$stmt->bind_param($bind, $par[0], $par[1])) {
                     error_log("[ricercaAcquisti] impossibile" .
+                            " effettuare il binding in input");
+                    $mysqli->close();
+                    return $acquisti;
+                }
+                break;
+
+	    case 3:
+                if (!$stmt->bind_param($bind, $par[0], $par[1], $par[2])) {
+                    error_log("[ricercaacquisti] impossibile" .
+                            " effettuare il binding in input");
+                    $mysqli->close();
+                    return $acquisti;
+                }
+                break;
+
+            case 4:
+                if (!$stmt->bind_param($bind, $par[0], $par[1], $par[2], $par[3])) {
+                    error_log("[ricercaacquisti] impossibile" .
                             " effettuare il binding in input");
                     $mysqli->close();
                     return $acquisti;
@@ -174,7 +226,7 @@ class AcquistoFactory {
 
         $row = array();
         $bind = $stmt->bind_result(
-                $row['acquisti_id'], $row['acquisti_idcd'], $row['acquisti_idcliente'], $row['acquisti_costo'], $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'], $row['clienti_email'], $row['clienti_via'], $row['clienti_numero_civico'], $row['clienti_citta'], $row['clienti_username'], $row['clienti_password'], $row['cd_id'], $row['cd_idcaratterizzazione'], $row['cd_anno']);
+                $row['acquisti_id'], $row['acquisti_idauto'], $row['acquisti_idcliente'], $row['acquisti_datainizio'], $row['acquisti_datafine'], $row['acquisti_costo'], $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'], $row['clienti_email'], $row['clienti_via'], $row['clienti_numero_civico'], $row['clienti_citta'], $row['clienti_username'], $row['clienti_password'], $row['cds_id'], $row['cds_idmodello'], $row['cds_anno'], $row['cds_targa']);
 
         if (!$bind) {
             error_log("[caricaAcquistiDaStmt] impossibile" .
@@ -196,6 +248,8 @@ class AcquistoFactory {
         $acquisto->setId($row['acquisti_id']);
         $acquisto->setCliente(UserFactory::instance()->creaClienteDaArray($row));
         $acquisto->setCd(CDFactory::instance()->creaCdDaArray($row));
+	$acquisto->setDatainizio($row['acquisti_datainizio']);
+	$acquisto->setDatafine($row['acquisti_datafine']);
         $acquisto->setCosto($row['acquisti_costo']);
         return $acquisto;
     }
@@ -206,8 +260,8 @@ class AcquistoFactory {
      * @return true se il salvataggio è andato a buon fine, false altrimenti
      */
     public function nuovo($acquisto) {
-        $query = "insert into acquisti (idcd, idcliente, costo)
-                  values (?, ?, ?)";
+        $query = "insert into acquisti (idcd, idcliente, datainizio, datafine, costo)
+                  values (?, ?, ?, ?, ?)";
 
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
@@ -225,7 +279,7 @@ class AcquistoFactory {
             return 0;
         }
 
-        if (!$stmt->bind_param('iid', $acquisto->getCD()->getId(), $acquisto->getCliente()->getId(), $acquisto->getCosto())) {
+        if (!$stmt->bind_param('iissd', $acquisto->getCd()->getId(), $acquisto->getCliente()->getId(), $acquisto->getDatainizio(), $acquisto->getDatafine(), $acquisto->getCosto())) {
             error_log("[nuovo] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();

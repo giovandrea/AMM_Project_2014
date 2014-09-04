@@ -23,6 +23,12 @@
             <?php } ?>
         </select>
         <br/>
+ 	<label for="datainizio">Data inizio</label>
+	<input name="datainizio" id="datainizio" type="text"/>
+	<br/>
+	<label for="datafine">Data fine</label>
+	<input name="datafine" id="datafine" type="text"/>
+	<br/>
         <button id="filtra" type="submit" name="cmd">Cerca</button>
     </form>
 </div>
@@ -37,6 +43,8 @@
             <th>Cliente</th>
             <th>Cd</th>
             <th>Costo</th>
+ 	    <th>Data inizio</th>
+	    <th>Data fine</th>
         </tr>
     </thead>
     <tbody>

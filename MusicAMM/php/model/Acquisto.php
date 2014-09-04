@@ -10,9 +10,13 @@ class Acquisto{
     
     private $cd;
 
-    private $cliente;   
- 
+    private $cliente;
+
     private $costo;
+
+    private $datainizio;
+
+    private $datafine;   
    
     public function getId() {
         return $this->id;
@@ -44,7 +48,23 @@ class Acquisto{
 
     public function setCosto($costo) {
         $this->costo = $costo;
-    }    
+    }
+
+    public function getDatainizio() {
+        return $this->datainizio;
+    }
+
+    public function setDatainizio($datainizio) {
+        $this->datainizio = $datainizio;
+    }
+
+    public function getDatafine() {
+        return $this->datafine;
+    }
+
+    public function setDatafine($datafine) {
+        $this->datafine = $datafine;
+    }
 }
 
 ?>

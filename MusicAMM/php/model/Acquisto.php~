@@ -2,7 +2,6 @@
 
 /**
  * Classe per l'acquisto di un CD
- *
  */
 
 class Acquisto{
@@ -11,9 +10,13 @@ class Acquisto{
     
     private $cd;
 
-    private $cliente;   
- 
+    private $cliente;
+
     private $costo;
+
+    private $datainizio;
+
+    private $datafine;   
    
     public function getId() {
         return $this->id;

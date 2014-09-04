@@ -4,7 +4,6 @@ include_once 'BaseController.php';
 include_once basename(__DIR__) . '/../model/CD.php';
 include_once basename(__DIR__) . '/../model/CDFactory.php';
 include_once basename(__DIR__) . '/../model/UserFactory.php';
-include_once basename(__DIR__) . '/../model/Caratterizzazione.php';
 
 /**
  * Controller che gestisce la modifica dei dati dell'applicazione relativa agli
@@ -86,8 +85,20 @@ class AmministratoreController extends BaseController {
                             $cliente_id = null;
                         }
 
+                        if (isset($request['datainizio'])) {
+                            $datainizio = $request['datainizio'];
+                        } else {
+                            $datainizio = null;
+                        }
+
+                        if (isset($request['datafine'])) {
+                            $datafine = $request['datafine'];
+                        } else {
+                            $datafine = null;
+                        }
+
                         $acquisti = AcquistoFactory::instance()->ricercaAcquisti(
-                                $user, $cd_id, $cliente_id);
+                                $user, $cd_id, $cliente_id, $datainizio, $datafine);
 
                         break;
 
@@ -125,7 +136,6 @@ class AmministratoreController extends BaseController {
 
                     // aggiornamento indirizzo
                     case 'indirizzo':
-
                         // in questo array inserisco i messaggi di 
                         // cio' che non viene validato
                         $msg = array();
@@ -159,34 +169,15 @@ class AmministratoreController extends BaseController {
                         $vd->setSottoPagina('catalogo_cd');
                         $msg = array();
                         $nuovo = new Cd();
-			$prova = new Caratterizzazione();
-                        $nuovo->setId(-1);
-			$prova->setId(-1);
+			$nuovo->setId(-1);
+                        $nuovo->setCaratterizzazione(CaratterizzazioneFactory::instance()->getCaratterizzazionePerId($request['caratterizzazione']));
 
- 			if ($request['anno'] != "") {
-				$nuovo->setAnno($request['anno']);
-			} else {
-				$msg[] = '<li> Inserire un anno valido </li>';
-			}
-
-			if ($request['titolo'] != "") {
-				$prova->setTitolo($request['titolo']);
-			} else {
-				$msg[] = '<li> Inserire un titolo valido </li>';
-			}
-
-			if ($request['artista'] != "") {
-				$prova->setArtista($request['artista']);
-			} else {
-				$msg[] = '<li> Inserire un artista valido </li>';
-			}
-
-			if ($request['prezzo'] != "") {
-				$nuovo->setPrezzo($request['prezzo']);
-			} else {
-				$msg[] = '<li> Inserire un prezzo valido </li>';
-			}
-
+                        if ($request['anno'] != "") {
+                            $nuovo->setAnno($request['anno']);
+                        } else {
+                            $msg[] = '<li> Inserire un anno valido </li>';
+                        }
+			
                         if (count($msg) == 0) {
                             $vd->setSottoPagina('catalogo_cd');
                             if (CDFactory::instance()->nuovo($nuovo) != 1) {
