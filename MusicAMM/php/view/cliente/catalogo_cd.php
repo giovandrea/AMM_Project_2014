@@ -1,21 +1,21 @@
-<h2>Catalogo CD</h2>
+<h2>Catalogo cd</h2>
 <table>
     <tr>
         <th>Artista</th>
         <th>Titolo Album</th>
         <th>Anno Pubblicazione</th>
         <th>Prezzo</th>
-        <th>Cancella</th>
+        <th>Acquista</th>
     </tr>
     <?
-    foreach($CDs as $CD){
+    foreach($cds as $cd){
     ?>
     <tr>
-        <td><?= $CD->getArtista() ?></td>
-        <td><?= $CD->getTitolo() ?></td>
-        <td><?= $CD->getAnno() ?></td>
-        <td><?= $CD->getPrezzo() ?></td>
-            <td><a href="cliente/ordini?cmd=prenota&CD=<?= $CD->getId() ?>" title="Compra il CD">
+        <td><?= $cd->getCaratterizzazione()->getArtista()->getNome() ?></td>
+        <td><?= $cd->getCaratterizzazione()->getTitolo() ?></td>
+        <td><?= $cd->getAnno() ?></td>
+        <td><?= $cd->getCaratterizzazione()->getPrezzo() ?> €</td>
+        <td><a href="cliente/cds?cmd=acquista&cd=<?= $cd->getId() ?>" title="Acquista il cd">
                     <img src="../images/button_buy.png" alt="Acquista"></a></td>
         </tr>
     <? } ?>

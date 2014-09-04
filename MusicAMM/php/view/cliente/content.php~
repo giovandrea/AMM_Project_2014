@@ -8,8 +8,8 @@ switch ($vd->getSottoPagina()) {
         include_once 'catalogo_cd.php';
         break;
     
-    case 'ordini':
-        include_once 'ordini.php';
+    case 'acquisti':
+        include_once 'acquisti.php';
         break;
 
     default:
@@ -23,7 +23,7 @@ switch ($vd->getSottoPagina()) {
         </p>
         <ul>
             <li><a href="cliente/anagrafica">Anagrafica</a></li>
-            <li><a href="cliente/ordini">Ordini</a></li>
+            <li><a href="cliente/acquisti">acquisti</a></li>
             <li><a href="cliente/catalogo_cd">Catalogo CD</a></li>            
         </ul>
         <?php

@@ -22,8 +22,8 @@ switch ($vd->getSottoPagina()) {
             Scegli una fra le seguenti sezioni:
         </p>
         <ul>
-            <li><a href="cliente/anagrafica">Anagrafica</a></li>
-            <li><a href="cliente/acquisti">acquisti</a></li>
+            <li><a href="cliente/anagrafica">Visiona Anagrafica</a></li>
+            <li><a href="cliente/acquisti">Acquisti</a></li>
             <li><a href="cliente/catalogo_cd">Catalogo CD</a></li>            
         </ul>
         <?php

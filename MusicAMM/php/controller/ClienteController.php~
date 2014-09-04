@@ -60,14 +60,14 @@ class ClienteController extends BaseController {
 
                     // visualizzazione degli ordini effettuati
                     case 'acquisti':
-                        $ordini = OrdiniFactory::instance()->ordiniPerCliente($user);
+                        $ordini = AcquistoFactory::instance()->acquistiPerCliente($user);
                         $vd->setSottoPagina('acquisti');
                         break;
 
                     // visualizzazione del catalogo
                     case 'catalogo':
-                        $catalogo = CatalogoFactory::instance()->getCatalogo();
-                        $vd->setSottoPagina('catalogo');
+                        $catalogo = CDFactory::instance()->getCd();
+                        $vd->setSottoPagina('catalogo_cd');
                         break;
 
                     default:
@@ -132,14 +132,14 @@ class ClienteController extends BaseController {
 
 		    // creazione di un nuovo acquisto
 		    case 'nuovo_acquisto':
-			$vd->setSottoPagina('catalogo');
+			$vd->setSottoPagina('catalogo_cd');
                         $msg = array();
                         $nuova = new Acquisto();
 
-			$nuova->setCd(CDFactory::instance()->getCDPerId($request['idcd']));
+			$nuova->setCd(CDFactory::instance()->getCdPerId($request['idcd']));
                         $nuova->setCliente($user);
  			$this->creaFeedbackUtente($msg, $vd, "Acquisto eseguito, costo: ". $nuova->getCosto()." €");
-			$veicoli = VeicoloFactory::instance()->getVeicoli();
+			$cds = CDFactory::instance()->getCd();
 			$this->showHomeUtente($vd);
 			break;
 
