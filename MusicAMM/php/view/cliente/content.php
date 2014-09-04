@@ -12,6 +12,10 @@ switch ($vd->getSottoPagina()) {
         include_once 'acquisti.php';
         break;
 
+    case 'ordine':
+	include_once 'ordine.php';
+	break;
+
     default:
         ?>
         <h2>Menu</h2>
@@ -24,7 +28,7 @@ switch ($vd->getSottoPagina()) {
         <ul>
             <li><a href="cliente/anagrafica">Visiona Anagrafica</a></li>
             <li><a href="cliente/acquisti">Acquisti</a></li>
-            <li><a href="cliente/catalogo_cd">Catalogo CD</a></li>            
+            <li><a href="cliente/cds">Catalogo CD</a></li>            
         </ul>
         <?php
         break;
