@@ -1,4 +1,4 @@
-<h2>Elenco ordini effettuati</h2>
+<h2>Elenco acquisti effettuati</h2>
 <table id="tabella_acquisti">
     <thead>
         <tr>
