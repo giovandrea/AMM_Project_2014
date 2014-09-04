@@ -58,9 +58,9 @@ class ClienteController extends BaseController {
                         $vd->setSottoPagina('anagrafica');
                         break;
 
-                    // visualizzazione degli ordini effettuati
+                    // visualizzazione degli acquisti effettuati
                     case 'acquisti':
-                        $ordini = AcquistoFactory::instance()->acquistiPerCliente($user);
+                        $acquisti = AcquistoFactory::instance()->acquistiPerCliente($user);
                         $vd->setSottoPagina('acquisti');
                         break;
 
