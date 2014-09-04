@@ -30,7 +30,7 @@ class AcquistoFactory {
      * @param string $data Data nella quale verificare la prenotabilità nel formato Y-m-d
      * @return Boolean true se il cd è acquistabile, false altrimenti
      */
-    public function isCdAcquistabile($id) {
+    public function isCdAcquistabile($id, $data) {
         $acquistabile = true;
 
 	/*calcolo il timestamp della data passata rispetto

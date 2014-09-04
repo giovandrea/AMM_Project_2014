@@ -1,5 +1,5 @@
 <div class="input-form">
-    <h3>Nuova prenotazione</h3>
+    <h3>Nuovo acquisto</h3>
     <form method="post" action="cliente/acquista">
         <input type="hidden" name="cmd" value="nuovo_acquisto"/>
         <input type="hidden" name="idcd" value="<?= $idcd ?>" />
