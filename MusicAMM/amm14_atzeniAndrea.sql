@@ -30,6 +30,8 @@ CREATE TABLE IF NOT EXISTS `acquisti` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idcd` int(11) DEFAULT NULL,
   `idcliente` int(11) DEFAULT NULL,
+  `datainizio` datetime DEFAULT NULL,
+  `datafine` date DEFAULT NULL,
   `costo` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `cd_fk` (`idcd`),

@@ -25,13 +25,13 @@ class AcquistoFactory {
     }
 
     /**
-     * Controlla che il cd passato come parametro sia selezionabile
-     * @param int $id del CD
+     * Controlla che il cd passato come parametro sia acquistabile
+     * @param int $id id del CD
+     * @param string $data Data nella quale verificare la prenotabilità nel formato Y-m-d
      * @return Boolean true se il cd è acquistabile, false altrimenti
      */
     public function isCdAcquistabile($id) {
         $acquistabile = true;
-
 
 	/*calcolo il timestamp della data passata rispetto
 	 * alla mezzanotte del giorno
@@ -121,7 +121,6 @@ class AcquistoFactory {
         $where = " where acquisti.id >= 0 ";
         $par = array();
 
-
         if (isset($cd_id)) {
             $where .= " and idcd = ? ";
             $bind .="i";
@@ -153,7 +152,7 @@ class AcquistoFactory {
         $query = "SELECT * 
                 FROM acquisti
                 JOIN clienti ON idcliente = clienti.id
-                JOIN cds ON idcd = cd.id
+                JOIN cds ON idcd = cds.id
                   " . $where;
 
         $mysqli = Db::getInstance()->connectDb();
@@ -226,7 +225,7 @@ class AcquistoFactory {
 
         $row = array();
         $bind = $stmt->bind_result(
-                $row['acquisti_id'], $row['acquisti_idauto'], $row['acquisti_idcliente'], $row['acquisti_datainizio'], $row['acquisti_datafine'], $row['acquisti_costo'], $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'], $row['clienti_email'], $row['clienti_via'], $row['clienti_numero_civico'], $row['clienti_citta'], $row['clienti_username'], $row['clienti_password'], $row['cds_id'], $row['cds_idmodello'], $row['cds_anno'], $row['cds_targa']);
+                $row['acquisti_id'], $row['acquisti_idcd'], $row['acquisti_idcliente'], $row['acquisti_datainizio'], $row['acquisti_datafine'], $row['acquisti_costo'], $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'], $row['clienti_email'], $row['clienti_via'], $row['clienti_numero_civico'], $row['clienti_citta'], $row['clienti_username'], $row['clienti_password'], $row['cds_id'], $row['cds_idmodello'], $row['cds_anno'], $row['cds_targa']);
 
         if (!$bind) {
             error_log("[caricaAcquistiDaStmt] impossibile" .
@@ -316,7 +315,7 @@ class AcquistoFactory {
         $query = "SELECT * 
                 FROM acquisti
                 JOIN clienti ON idcliente = clienti.id
-                JOIN cds ON idcd = cd.id
+                JOIN cds ON idcd = cds.id
                 WHERE acquisti.idcliente = ?";
 
         $mysqli = Db::getInstance()->connectDb();

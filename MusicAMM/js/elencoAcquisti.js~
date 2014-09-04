@@ -7,12 +7,15 @@ $(document).ready(function () {
         // impedisco il submit
         e.preventDefault(); 
         var _cd = $( "#cd option:selected" ).attr('value');
-        var _cliente = $( "#cliente option:selected" ).attr('value');        
-
+        var _cliente = $( "#cliente option:selected" ).attr('value');
+ 	var _datainizio = $("#datainizio").val();
+	var _datafine = $("#datafine").val();        
 
         var par = {
             cd : _cd,
-            cliente : _cliente
+            cliente : _cliente,
+ 	    datainizio :_datainizio,
+	    datafine : _datafine
         };
      
         $.ajax({
@@ -45,6 +48,8 @@ $(document).ready(function () {
                                 "<tr id=\"row_" + i + "\" >\n\
                                        <td>a</td>\n\
                                        <td>a</td>\n\
+				       <td>a</td>\n\
+				       <td>a</td>\n\
                                        <td>a</td>\n\\n\
                                         </tr>");
                             if(i%2 == 0){
@@ -54,7 +59,9 @@ $(document).ready(function () {
                             var colonne = $("#row_"+ i +" td");
                             $(colonne[0]).text(esame['cliente']);
                             $(colonne[1]).text(esame['cd']);
-                            $(colonne[2]).text(esame['costo'] + " €");
+			    $(colonne[2]).text(esame['datainizio']);
+			    $(colonne[3]).text(esame['datafine']);
+                            $(colonne[4]).text(esame['costo'] + " €");
 
                             i++;            
                         }
