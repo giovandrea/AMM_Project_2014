@@ -65,7 +65,7 @@ class ClienteController extends BaseController {
                         break;
 
                     // visualizzazione del catalogo
-                    case 'catalogo':
+                    case 'cds':
                         $cds = CDFactory::instance()->getCd();
                         $vd->setSottoPagina('catalogo_cd');
                         break;
