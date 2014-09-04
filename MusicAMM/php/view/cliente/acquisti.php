@@ -3,13 +3,17 @@
     <thead>
         <tr>
             <th>Cd</th>
+	    <th>Data inizio</th>
+	    <th>Data fine</th>
             <th>Costo</th>
         </tr>
     </thead>
     <tbody>
         <? foreach($acquisti as $acquisto) { ?>
         <tr>
-            <td><?= $acquisto->getCd()->getArtista()->getNome() . " " . $acquisto->getCd()->getCostruttore()->getTitolo() ?></td>
+            <td><?= $acquisto->getCd()->getArtista()->getNome() . " " . $acquisto->getCd()->getCaratterizzazione()->getTitolo() ?></td>
+	    <td><?= $acquisto->getDatainizio() ?></td>
+	    <td><?= $acquisto->getDatafine() ?></td>
             <td><?= $acquisto->getCosto() ?> €</td>
         </tr>                
         <? } ?>

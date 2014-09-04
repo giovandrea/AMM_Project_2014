@@ -65,7 +65,7 @@ class ClienteController extends BaseController {
                         break;
 
                     // visualizzazione del catalogo
-                    case 'catalogo':
+                    case 'cds':
                         $cds = CDFactory::instance()->getCd();
                         $vd->setSottoPagina('catalogo_cd');
                         break;
@@ -125,7 +125,7 @@ class ClienteController extends BaseController {
                         $idcd = filter_var($request['cd'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                         if (isset($idcd)) {
 
-                            $vd->setSottoPagina('acquisto');
+                            $vd->setSottoPagina('ordine');
                         }
                         $this->showHomeCliente($vd);
                         break;
@@ -138,6 +138,60 @@ class ClienteController extends BaseController {
 
 			$nuova->setCd(CDFactory::instance()->getCdPerId($request['idcd']));
                         $nuova->setCliente($user);
+
+
+			$datainizio = DateTime::createFromFormat("Y-m-d", ($request['datainizio']));
+                        $datafine = DateTime::createFromFormat("Y-m-d", ($request['datafine']));
+
+                        if ($datainizio) {
+                            if ($datainizio->getTimeStamp() >= $this->oggi()) {
+                                $nuova->setDatainizio($request['datainizio']);
+                            } else {
+                                $msg[] = '<li> Inserire una data di inizio valida </li>';
+                            }
+                        } else {
+                            $msg[] = '<li> Inserire una data di inizio valida </li>';
+                        }
+
+                        if ($datafine) {
+                            if ($datafine->getTimeStamp() >= $this->oggi()) {
+                                $nuova->setDatafine($request['datafine']);
+                            } else {
+                                $msg[] = '<li> Inserire una data di inizio valida </li>';
+                            }
+                        } else {
+                            $msg[] = '<li> Inserire una data di fine valida </li>';
+                        }
+                        
+                        
+                        if (count($msg) == 0) {
+                            if($datafine->getTimeStamp() < $datainizio->getTimeStamp()){
+                                $msg[] = '<li>La data di inizio è successiva alla data di fine</li>';
+                            }
+                        }
+
+                        //controllo che il cd sia libero
+                        if (count($msg) == 0) {
+                            $costo = (($datafine->getTimeStamp() - $datainizio->getTimeStamp()) / 86400 + 1 ) * $nuova->getCd()->getCaratterizzazione()->getPrezzo();
+                            $nuova->setCosto($costo);
+                            $flag = true;
+                            $iteratore = $datainizio->getTimeStamp();
+                            $fine = $datafine->getTimeStamp();
+                            while ($iteratore <= $fine && $flag) {
+                                if (!AcquistoFactory::instance()->isCdPrenotabile($request['idcd'], $iteratore)) {
+                                    $msg[] = '<li> Il cd non è prenotabile per tutto l\'intervallo scelto</li>';
+                                    $flag = false;
+                                }
+                                $iteratore += 86400;
+                            }
+                        }
+
+                       if (count($msg) == 0) {
+                            if (NoleggioFactory::instance()->nuovo($nuova) != 1) {
+                                $msg[] = '<li> Impossibile acquistare </li>';
+                            }
+                        }
+
  			$this->creaFeedbackUtente($msg, $vd, "Acquisto eseguito, costo: ". $nuova->getCosto()." €");
 			$cds = CDFactory::instance()->getCd();
 			$this->showHomeUtente($vd);
