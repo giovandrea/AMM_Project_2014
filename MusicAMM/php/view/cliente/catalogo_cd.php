@@ -5,7 +5,7 @@
         <th>Titolo Album</th>
         <th>Anno Pubblicazione</th>
         <th>Prezzo</th>
-        <th>Acquista</th>
+        <th>Richiedi</th>
     </tr>
     <?
     foreach($cds as $cd){
