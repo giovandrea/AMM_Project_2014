@@ -170,7 +170,8 @@ class ClienteController extends BaseController {
                             }
                         }
 
-                        //controllo che il cd sia libero
+                        /*controllo che sia possibile prenotare il cd
+			 */
                         if (count($msg) == 0) {
                             $costo = (($datafine->getTimeStamp() - $datainizio->getTimeStamp()) / 86400 + 1 ) * $nuova->getCd()->getCaratterizzazione()->getPrezzo();
                             $nuova->setCosto($costo);
@@ -178,7 +179,7 @@ class ClienteController extends BaseController {
                             $iteratore = $datainizio->getTimeStamp();
                             $fine = $datafine->getTimeStamp();
                             while ($iteratore <= $fine && $flag) {
-                                if (!AcquistoFactory::instance()->isCdPrenotabile($request['idcd'], $iteratore)) {
+                                if (!AcquistoFactory::instance()->isCdAcquistabile($request['idcd'], $iteratore)) {
                                     $msg[] = '<li> Il cd non è prenotabile per tutto l\'intervallo scelto</li>';
                                     $flag = false;
                                 }

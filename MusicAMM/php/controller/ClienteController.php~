@@ -140,8 +140,8 @@ class ClienteController extends BaseController {
                         $nuova->setCliente($user);
 
 
-			$datainizio = DateTime::createFromFormat("Y-m-d", ($request['datainizio']));
-                        $datafine = DateTime::createFromFormat("Y-m-d", ($request['datafine']));
+			$datainizio = DateTime::createFromFormat("d-m-Y", ($request['datainizio']));
+                        $datafine = DateTime::createFromFormat("d-m-Y", ($request['datafine']));
 
                         if ($datainizio) {
                             if ($datainizio->getTimeStamp() >= $this->dataAttuale()) {
@@ -178,7 +178,7 @@ class ClienteController extends BaseController {
                             $iteratore = $datainizio->getTimeStamp();
                             $fine = $datafine->getTimeStamp();
                             while ($iteratore <= $fine && $flag) {
-                                if (!AcquistoFactory::instance()->isCdPrenotabile($request['idcd'], $iteratore)) {
+                                if (!AcquistoFactory::instance()->isCdAcquistabile($request['idcd'], $iteratore)) {
                                     $msg[] = '<li> Il cd non è prenotabile per tutto l\'intervallo scelto</li>';
                                     $flag = false;
                                 }
