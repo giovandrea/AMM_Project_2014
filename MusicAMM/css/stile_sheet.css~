@@ -15,7 +15,6 @@ header {
     color: white;
     padding-top: 20px;
     padding-bottom: 20px;
-    text-decoration: none;
 }
 
 #header{
@@ -26,11 +25,13 @@ header {
     height: 95px;
     padding-left: 10px;
     line-height: 150px;
+    text-decoration: none;
 }
 
 #header h1{
     font-size: 3em;
     margin: 1px;
+    text-decoration: none;
 }
 
 #sidebar1{

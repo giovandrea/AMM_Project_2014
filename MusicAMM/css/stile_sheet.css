@@ -25,7 +25,6 @@ header {
     height: 95px;
     padding-left: 10px;
     line-height: 150px;
-    text-decoration: none;
 }
 
 #header h1{
@@ -153,6 +152,9 @@ h2, h3{
 
 .logout a, .logout a:visited {
     color: white;
+    text-decoration: none;
+    background-image: url('../images/logout.gif');
+
 }
 
 ttable {
