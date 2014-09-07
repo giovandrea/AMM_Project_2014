@@ -27,7 +27,7 @@ switch ($vd->getSottoPagina()) {
             Benvenuto, <?= $user->getNome() ?>
         </p>
         <p>
-            Scegli una fra le seguenti sezioni:
+            Scegli una fra le seguenti azioni:
         </p>
         <ul>
             <li><a href="cliente/anagrafica">Visiona Anagrafica</a></li>

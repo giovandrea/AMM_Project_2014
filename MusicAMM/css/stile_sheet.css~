@@ -45,9 +45,13 @@ header {
     padding-left: 10px;
 }
 
+#sidebar1 a:link, #footer a:visited{
+    color: white;
+    text-decoration: none;
+}
+
 #sidebar1 h2{
     padding-left: 10px;
-    color: white;
 }
 
 #content {
@@ -71,7 +75,7 @@ header {
 }
 
 #content a:link, #content a:visited {
-    color:#9e165a;
+    color: #996666;
 }
 
 a:hover{
