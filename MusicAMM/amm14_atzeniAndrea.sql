@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generato il: Ago 24, 2014 alle 15:28
+-- Generato il: Set 07, 2014 alle 15:57
 -- Versione del server: 5.5.35-0ubuntu0.13.10.2
 -- Versione PHP: 5.5.3-1ubuntu2.1
 
@@ -30,13 +30,20 @@ CREATE TABLE IF NOT EXISTS `acquisti` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idcd` int(11) DEFAULT NULL,
   `idcliente` int(11) DEFAULT NULL,
-  `datainizio` datetime DEFAULT NULL,
+  `datainizio` date DEFAULT NULL,
   `datafine` date DEFAULT NULL,
   `costo` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `cd_fk` (`idcd`),
   KEY `cliente_fk` (`idcliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dump dei dati per la tabella `acquisti`
+--
+
+INSERT INTO `acquisti` (`id`, `idcd`, `idcliente`, `datainizio`, `datafine`, `costo`) VALUES
+(3, 1, 1, '2014-09-09', '2014-09-11', 51);
 
 -- --------------------------------------------------------
 
@@ -99,7 +106,7 @@ INSERT INTO `artisti` (`id`, `nomeartista`) VALUES
 CREATE TABLE IF NOT EXISTS `caratterizzazioni` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titolo` varchar(60) DEFAULT NULL,
-  `idartista` int(11) DEFAULT NULL,  
+  `idartista` int(11) DEFAULT NULL,
   `prezzo` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `artisti_fk` (`idartista`)
@@ -110,12 +117,12 @@ CREATE TABLE IF NOT EXISTS `caratterizzazioni` (
 --
 
 INSERT INTO `caratterizzazioni` (`id`, `titolo`, `idartista`, `prezzo`) VALUES
-(1, 'The Scarecrow', 1, 18),
-(2, 'Triumph and Power', 6, 17),
-(3, 'The Pagan Manifesto', 4, 19),
-(4, 'Space Police - Defenders Of The Crown', 2,  22),
-(5, 'Ritual', 3, 19),
-(6, 'Rock Opera: Episode II - In Search Of The Little Prince', 5, 22);
+(1, 'The Scarecrow', 1, 2),
+(2, 'Triumph and Power', 6, 1),
+(3, 'The Pagan Manifesto', 4, 1),
+(4, 'Space Police - Defenders Of The Crown', 2, 2),
+(5, 'Ritual', 3, 2),
+(6, 'Rock Opera: Episode II - In Search Of The Little Prince', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -129,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `cds` (
   `anno` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `caratterizzazione_fk` (`idcaratterizzazione`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dump dei dati per la tabella `cds`
@@ -137,11 +144,11 @@ CREATE TABLE IF NOT EXISTS `cds` (
 
 INSERT INTO `cds` (`id`, `idcaratterizzazione`, `anno`) VALUES
 (1, 2, 2014),
-(2, 1, 2014),
 (3, 4, 2014),
 (4, 5, 2014),
 (5, 6, 2014),
-(6, 3, 2014);
+(6, 3, 2014),
+(7, 1, 2014);
 
 -- --------------------------------------------------------
 

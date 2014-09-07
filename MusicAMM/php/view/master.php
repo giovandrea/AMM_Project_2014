@@ -81,7 +81,7 @@ if (!$vd->isJson()) {
 
                 <div id="footer">
                     <p>
-                        Sito per l'acquisto di CD musicali, Andrea Atzeni, 2014
+                        Sito per la prenotazione di CD musicali, Andrea Atzeni, 2014
                     </p>
                     <p>
                         <a id="htmlval" href="http://validator.w3.org/check?uri=referer">HTML Valid</a>

@@ -16,7 +16,7 @@ include_once 'Settings.php';
             ?>
         </p>
         <?php if (isset($login)) { ?>
-            <p>Puoi autenticarti alla pagina di <a href="login">login</a></p>
+            <p>Puoi autenticarti alla pagina di <a href="http://spano.sc.unica.it/amm2014/atzeniAndrea/MusicAMM/php/login">login</a></p>
         <?php } ?>
     </body>
 </html>
