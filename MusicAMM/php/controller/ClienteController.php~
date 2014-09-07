@@ -144,7 +144,7 @@ class ClienteController extends BaseController {
                         $datafine = DateTime::createFromFormat("Y-m-d", ($request['datafine']));
 
                         if ($datainizio) {
-                            if ($datainizio->getTimeStamp() >= $this->oggi()) {
+                            if ($datainizio->getTimeStamp() >= $this->dataAttuale()) {
                                 $nuova->setDatainizio($request['datainizio']);
                             } else {
                                 $msg[] = '<li> Inserire una data di inizio valida </li>';
@@ -154,7 +154,7 @@ class ClienteController extends BaseController {
                         }
 
                         if ($datafine) {
-                            if ($datafine->getTimeStamp() >= $this->oggi()) {
+                            if ($datafine->getTimeStamp() >= $this->dataAttuale()) {
                                 $nuova->setDatafine($request['datafine']);
                             } else {
                                 $msg[] = '<li> Inserire una data di inizio valida </li>';
@@ -211,6 +211,11 @@ class ClienteController extends BaseController {
         // includo la vista
         require basename(__DIR__) . '/../view/master.php';
     }
+	private static function dataAttuale() {
+        	$data = strtotime("now") - strtotime("now") % 86400;
+		return $;
+    	}
+
 }
 
 ?>

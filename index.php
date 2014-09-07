@@ -11,7 +11,7 @@
         </p>
         <p>
         <h3>Descrizione</h3>
-        L'applicazione gestisce la compravendita di cd musicali. Sono presenti due classi: gli amministratori e i clienti.</br>
+        L'applicazione gestisce la prenotazione di cd musicali. Sono presenti due classi per il sito: gli amministratori e i clienti.</br>
         Gli amministratori possono:
         <ul>
             <li>Visualizzare il catalogo dei CD</li>
@@ -23,14 +23,13 @@
         I clienti, invece, possono:
         <ul>
             <li>Visualizzare il catalogo CD</li>
-            <li>Acquistare un CD</li>
-            <li>Visualizzare una lista contenente i propri acquisti</li>
+            <li>Prenotare un CD</li>
+            <li>Visualizzare una lista contenente i propri ordini</li>
         </ul>
     </p>
     <p>
         <h4>Note</h4>
         <ul>
-            <li>L'applicazione è attualmente in fase beta</li>
             <li>Il costo dei CD è stato messo a caso, ma le altre informazioni sono veritiere</li>
         </ul>
     </p>
