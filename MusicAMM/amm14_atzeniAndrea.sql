@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generato il: Set 07, 2014 alle 15:57
+-- Generato il: Set 07, 2014 alle 16:27
 -- Versione del server: 5.5.35-0ubuntu0.13.10.2
 -- Versione PHP: 5.5.3-1ubuntu2.1
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `artisti` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nomeartista` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dump dei dati per la tabella `artisti`
@@ -95,7 +95,8 @@ INSERT INTO `artisti` (`id`, `nomeartista`) VALUES
 (3, 'Shaaman'),
 (4, 'Elvenking'),
 (5, 'Genius'),
-(6, 'Grand Magus');
+(6, 'Grand Magus'),
+(7, 'Christophe Heral');
 
 -- --------------------------------------------------------
 
@@ -110,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `caratterizzazioni` (
   `prezzo` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `artisti_fk` (`idartista`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dump dei dati per la tabella `caratterizzazioni`
@@ -122,7 +123,8 @@ INSERT INTO `caratterizzazioni` (`id`, `titolo`, `idartista`, `prezzo`) VALUES
 (3, 'The Pagan Manifesto', 4, 1),
 (4, 'Space Police - Defenders Of The Crown', 2, 2),
 (5, 'Ritual', 3, 2),
-(6, 'Rock Opera: Episode II - In Search Of The Little Prince', 5, 2);
+(6, 'Rock Opera: Episode II - In Search Of The Little Prince', 5, 2),
+(7, 'Rayman Origin OST', 7, 1);
 
 -- --------------------------------------------------------
 
@@ -144,11 +146,12 @@ CREATE TABLE IF NOT EXISTS `cds` (
 
 INSERT INTO `cds` (`id`, `idcaratterizzazione`, `anno`) VALUES
 (1, 2, 2014),
-(3, 4, 2014),
+(2, 1, 2008),
+(3, 4, 2002),
 (4, 5, 2014),
-(5, 6, 2014),
+(5, 6, 2004),
 (6, 3, 2014),
-(7, 1, 2014);
+(7, 7, 2012);
 
 -- --------------------------------------------------------
 
