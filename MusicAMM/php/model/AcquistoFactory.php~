@@ -39,7 +39,7 @@ class AcquistoFactory {
 	if ($data == "now") {
 	     $data = strtotime("now");
 	}
-	     $data = $data - $data % 86400;
+	     $data = $data - ($data % 86400);
 
         $query = "SELECT * FROM acquisti WHERE `idcd` = ?";
         $mysqli = Db::getInstance()->connectDb();
@@ -87,9 +87,9 @@ class AcquistoFactory {
 
 	    /*qui vengono convertite le date (86400 secondi ogni giorno)
 	     */
-	    $datainizio = DateTime::createFromFormat("d-m-Y", "$datainizio")->getTimeStamp();
+	    $datainizio = DateTime::createFromFormat("Y-m-d", "$datainizio")->getTimeStamp();
 	    $datainizio -= $datainizio % 86400;
-	    $datafine = DateTime::createFromFormat("d-m-Y", "$datafine")->getTimeStamp();
+	    $datafine = DateTime::createFromFormat("Y-m-d", "$datafine")->getTimeStamp();
 	    $datafine -= $datafine % 86400;
 	
             if ($data >= $datainizio && $data <= $datafine) {

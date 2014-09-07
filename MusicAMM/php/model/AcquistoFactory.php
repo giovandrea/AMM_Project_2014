@@ -33,13 +33,13 @@ class AcquistoFactory {
     public function isCdAcquistabile($id, $data) {
         $acquistabile = true;
 
-	/*calcolo il timestamp della data passata rispetto
+	/* calcolo il timestamp della data passata rispetto
 	 * alla mezzanotte del giorno
 	 */
 	if ($data == "now") {
 	     $data = strtotime("now");
 	}
-	     $data = $data - $data % 86400;
+	     $data = $data - ($data % 86400);
 
         $query = "SELECT * FROM acquisti WHERE `idcd` = ?";
         $mysqli = Db::getInstance()->connectDb();
