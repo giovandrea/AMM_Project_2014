@@ -45,13 +45,14 @@ header {
     padding-left: 10px;
 }
 
-#sidebar1 a:link, #footer a:visited{
+#sidebar1 a:link, #sidebar1 a:visited{
     color: white;
     text-decoration: none;
 }
 
 #sidebar1 h2{
     padding-left: 10px;
+    color: white;
 }
 
 #content {

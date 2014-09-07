@@ -50,6 +50,11 @@ header {
     text-decoration: none;
 }
 
+#content a:link, #content a:visited{
+    color: #996666;
+    text-decoration: none;
+}
+
 #sidebar1 h2{
     padding-left: 10px;
     color: white;
@@ -147,10 +152,6 @@ h2, h3{
 
 .logout a, .logout a:visited {
     color: white;
-}
-
-a:visited {
-    color: #9e165a;
 }
 
 ttable {
