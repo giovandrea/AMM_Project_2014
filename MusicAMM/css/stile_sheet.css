@@ -154,7 +154,7 @@ p.logout {
     background-image: url('../images/logout.png');
     background-repeat: no-repeat;
     background-position: right;
-    padding: 50px;
+    padding: 30px;
 }
 
 .logout a, .logout a:visited {
