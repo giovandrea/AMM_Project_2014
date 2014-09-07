@@ -150,13 +150,14 @@ h2, h3{
     color: #000000;
 }
 
+.logout {
+    background-image: url('../images/logout.gif');
+    background-repeat: no-repeat;
+}
+
 .logout a, .logout a:visited {
     color: white;
     text-decoration: none;
-    background-image: url('../images/logout.gif');
-    background-repeat: no-repeat;
-
-
 }
 
 ttable {
