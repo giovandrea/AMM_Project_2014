@@ -73,6 +73,15 @@ class ClienteController extends BaseController {
                     default:
                         $vd->setSottoPagina('home');
                         break;
+
+                    // visualizzazione delle info sul sito
+                    case 'readme':
+                        $vd->setSottoPagina('readme');
+                        break;
+
+                    default:
+                        $vd->setSottoPagina('home');
+                        break;
                 }
             }
 

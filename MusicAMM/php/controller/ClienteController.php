@@ -70,10 +70,6 @@ class ClienteController extends BaseController {
                         $vd->setSottoPagina('catalogo_cd');
                         break;
 
-                    default:
-                        $vd->setSottoPagina('home');
-                        break;
-
                     // visualizzazione delle info sul sito
                     case 'readme':
                         $vd->setSottoPagina('readme');
