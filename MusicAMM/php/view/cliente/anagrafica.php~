@@ -11,7 +11,7 @@
 
     <form method="post" action="cliente/anagrafica">
         <input type="hidden" name="cmd" value="indirizzo"/>
-        <label for="via">Via o Piazza:</label>
+        <label for="via">Via:</label>
         <input type="text" name="via" id="via" value="<?= $user->getVia() ?>"/>
         <br>
         <label for="civico">Numero Civico</label>

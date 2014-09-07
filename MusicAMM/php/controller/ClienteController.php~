@@ -212,8 +212,8 @@ class ClienteController extends BaseController {
         require basename(__DIR__) . '/../view/master.php';
     }
 	private static function dataAttuale() {
-        	$data = strtotime("now") - strtotime("now") % 86400;
-		return $;
+        	$data_attuale = strtotime("now") - strtotime("now") % 86400;
+		return $data_attuale;
     	}
 
 }

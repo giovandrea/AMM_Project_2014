@@ -1,5 +1,5 @@
 <div class="input-form">
-    <h2>Informazioni generali</h2>
+    <h2>Dati personali</h2>
     <ul>
         <li><strong>Nome:</strong> <?= $user->getNome() ?></li>
         <li><strong>Cognome:</strong> <?= $user->getCognome() ?></li>
@@ -7,7 +7,7 @@
 </div>
 
 <div class="input-form">
-    <h3>Altre informazioni</h3>
+    <h3>Dati personali</h3>
 
     <form method="post" action="dipendente/anagrafica">
         <input type="hidden" name="cmd" value="indirizzo"/>

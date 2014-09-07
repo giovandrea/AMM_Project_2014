@@ -140,8 +140,8 @@ class ClienteController extends BaseController {
                         $nuova->setCliente($user);
 
 
-			$datainizio = DateTime::createFromFormat("Y-m-d", ($request['datainizio']));
-                        $datafine = DateTime::createFromFormat("Y-m-d", ($request['datafine']));
+			$datainizio = DateTime::createFromFormat("d-m-Y", ($request['datainizio']));
+                        $datafine = DateTime::createFromFormat("d-m-Y", ($request['datafine']));
 
                         if ($datainizio) {
                             if ($datainizio->getTimeStamp() >= $this->dataAttuale()) {

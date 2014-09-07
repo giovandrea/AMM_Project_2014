@@ -15,8 +15,8 @@
         Gli amministratori possono:
         <ul>
             <li>Visualizzare il catalogo dei CD</li>
-            <li>Aggiungere cd al catalogo</li>
-            <li>Rimuovere cd dal catalogo</li>
+            <li>Aggiungere CD al catalogo</li>
+            <li>Rimuovere CD dal catalogo</li>
             <li>Visualizzare una lista contentente tutti gli ordini effettuati da tutti gli utenti</li>
             <li>Gestire la propria anagrafica</li>
         </ul>
@@ -40,8 +40,8 @@
         <li>Utilizzo di PHP e MySQL</li>
         <li>Utilizzo del pattern MVC</li>
         <li>Due ruoli (cliente e amministratore)</li>
-        <li>Transazione per il salvataggio di un nuovo acquisto di CD (metodo contenuto nella classe AcquistoFactory)</li>
-        <li>Caricamento ajax dei risultati filtrati dello storico degli acquisti nel ruolo degli amministratori</li>
+        <li>Transazione per il salvataggio di un nuova prenotazione di CD (metodo contenuto nella classe AcquistoFactory)</li>
+        <li>Caricamento ajax dei risultati filtrati dello storico delle prenotazioni nel ruolo degli amministratori</li>
     </ol>
 </p>
 <p>
