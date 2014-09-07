@@ -170,7 +170,8 @@ class ClienteController extends BaseController {
                             }
                         }
 
-                        //controllo che il cd sia libero
+                        /*controllo che sia possibile prenotare il cd
+			 */
                         if (count($msg) == 0) {
                             $costo = (($datafine->getTimeStamp() - $datainizio->getTimeStamp()) / 86400 + 1 ) * $nuova->getCd()->getCaratterizzazione()->getPrezzo();
                             $nuova->setCosto($costo);
@@ -187,7 +188,7 @@ class ClienteController extends BaseController {
                         }
 
                        if (count($msg) == 0) {
-                            if (NoleggioFactory::instance()->nuovo($nuova) != 1) {
+                            if (AcquistoFactory::instance()->nuovo($nuova) != 1) {
                                 $msg[] = '<li> Impossibile acquistare </li>';
                             }
                         }
