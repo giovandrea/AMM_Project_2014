@@ -150,8 +150,8 @@ h2, h3{
     color: #000000;
 }
 
-.logout {
-    background-image: url('../images/logout.gif');
+p.logout {
+    background-image: url('../images/logout.png');
     background-repeat: no-repeat;
 }
 
