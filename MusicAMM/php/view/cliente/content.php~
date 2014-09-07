@@ -16,6 +16,10 @@ switch ($vd->getSottoPagina()) {
 	include_once 'ordine.php';
 	break;
 
+    case 'readme':
+	include_once 'ordine.php';
+	break;
+
     default:
         ?>
         <h2>Menu</h2>

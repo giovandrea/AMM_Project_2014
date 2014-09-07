@@ -17,7 +17,7 @@ switch ($vd->getSottoPagina()) {
 	break;
 
     case 'readme':
-	include_once 'ordine.php';
+	include_once 'readme.php';
 	break;
 
     default:
