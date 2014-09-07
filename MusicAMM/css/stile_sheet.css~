@@ -151,7 +151,7 @@ h2, h3{
 }
 
 p.logout {
-    background-image: url('../images/logout.gif');
+    background-image: url('../images/logout.png');
     background-repeat: no-repeat;
 }
 
