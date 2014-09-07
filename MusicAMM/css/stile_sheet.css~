@@ -21,7 +21,7 @@ header {
     background-image: url('../images/logo.png');
     background-size: 110px 110px;
     background-repeat: no-repeat;
-    background-position: center left;
+    background-position: center right;
     height: 95px;
     padding-left: 10px;
     line-height: 150px;

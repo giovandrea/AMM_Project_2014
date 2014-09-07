@@ -21,7 +21,7 @@ header {
     background-image: url('../images/logo.png');
     background-size: 110px 110px;
     background-repeat: no-repeat;
-    background-position: center right;
+    background-position: center;
     height: 95px;
     padding-left: 10px;
     line-height: 150px;
@@ -148,13 +148,6 @@ label {
 
 h2, h3{
     color: #000000;
-}
-
-p.logout {
-    background-image: url('../images/logout.png');
-    background-repeat: no-repeat;
-    background-position: right;
-    padding: 50px;
 }
 
 .logout a, .logout a:visited {
