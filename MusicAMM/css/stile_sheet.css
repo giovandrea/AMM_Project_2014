@@ -154,6 +154,8 @@ h2, h3{
     color: white;
     text-decoration: none;
     background-image: url('../images/logout.gif');
+    background-repeat: no-repeat;
+
 
 }
 
