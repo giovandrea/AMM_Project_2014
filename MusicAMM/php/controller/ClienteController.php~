@@ -189,7 +189,7 @@ class ClienteController extends BaseController {
 
                        if (count($msg) == 0) {
                             if (AcquistoFactory::instance()->nuovo($nuova) != 1) {
-                                $msg[] = '<li> Impossibile acquistare </li>';
+                                $msg[] = '<li> Impossibile prenotare il cd </li>';
                             }
                         }
 
