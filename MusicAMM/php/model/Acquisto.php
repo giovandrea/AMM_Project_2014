@@ -27,7 +27,7 @@ class Acquisto{
     }
 
     public function getCd() {
-        return $cd->cd;
+        return $cd->$cd;
     }
 
     public function setCd($cd) {
