@@ -17,7 +17,7 @@ switch ($vd->getSottoPagina()) {
 	break;
 
     case 'readme':
-	include_once 'ordine.php';
+	include_once 'readme.php';
 	break;
 
     default:
@@ -32,7 +32,8 @@ switch ($vd->getSottoPagina()) {
         <ul>
             <li><a href="cliente/anagrafica">Visiona Anagrafica</a></li>
             <li><a href="cliente/acquisti">Acquisti</a></li>
-            <li><a href="cliente/cds">Catalogo CD</a></li>            
+            <li><a href="cliente/cds">Catalogo CD</a></li>
+	    <li><a href="cliente/cds">Catalogo CD</a></li>           
         </ul>
         <?php
         break;

@@ -31,8 +31,9 @@ switch ($vd->getSottoPagina()) {
         </p>
         <ul>
             <li><a href="cliente/anagrafica">Visiona Anagrafica</a></li>
-            <li><a href="cliente/acquisti">Acquisti</a></li>
-            <li><a href="cliente/cds">Catalogo CD</a></li>            
+            <li><a href="cliente/acquisti">Ordini Effettuati</a></li>
+            <li><a href="cliente/cds">Catalogo CD</a></li>
+	    <li><a href="cliente/readme">Informazioni Sul Sito</a></li>           
         </ul>
         <?php
         break;

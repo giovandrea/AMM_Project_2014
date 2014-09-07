@@ -19,6 +19,10 @@ switch ($vd->getSottoPagina()) {
     case 'crea_cd':
         include 'crea_cd.php';
         break;
+
+    case 'readme':
+        include 'readme.php';
+        break;
         ?>
 
 
@@ -31,9 +35,10 @@ switch ($vd->getSottoPagina()) {
             Scegli una fra le seguenti sezioni:
         </p>
         <ul>
-            <li><a href="amministratore/anagrafica">Anagrafica</a></li>
+            <li><a href="amministratore/anagrafica">Visiona Anagrafica</a></li>
             <li><a href="amministratore/catalogo">Catalogo CD</a></li>
-            <li><a href="amministratore/acquisti">Elenco Acquisti</a></li>
+            <li><a href="amministratore/acquisti">Elenco Ordini</a></li>
+	    <li><a href="amministratore/readme">Informazioni Sul Sito</a></li>
         </ul>
         <?php
         break;

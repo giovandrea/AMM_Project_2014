@@ -4,4 +4,5 @@
     <li class="<?= $vd->getSottoPagina() == 'anagrafica' ? 'current_page_item' : '' ?>"><a href="cliente/anagrafica">Visiona Anagrafica</a></li>
     <li class="<?= $vd->getSottoPagina() == 'acquisti' ? 'current_page_item' : '' ?>"><a href="cliente/acquisti">Acquisti</a></li>
     <li class="<?= $vd->getSottoPagina() == 'cds' ? 'current_page_item' : '' ?>"><a href="cliente/cds">Catalogo CD</a></li>
+    <li class="<?= $vd->getSottoPagina() == 'readme' ? 'current_page_item' : '' ?>"><a href="cliente/readme">Informazioni</a></li>
 </ul>

@@ -108,6 +108,11 @@ class AmministratoreController extends BaseController {
                         $vd->setSottoPagina('catalogo_cd');
                         break;
 
+                    // visualizzazione delle info sul sito
+                    case 'readme':
+                        $vd->setSottoPagina('readme');
+                        break;
+
  		     default:
 		         $vd->setSottoPagina('home');
                          break;
