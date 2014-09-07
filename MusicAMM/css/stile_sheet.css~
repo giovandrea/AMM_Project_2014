@@ -153,6 +153,7 @@ h2, h3{
 p.logout {
     background-image: url('../images/logout.png');
     background-repeat: no-repeat;
+    background-position: left;
 }
 
 .logout a, .logout a:visited {
